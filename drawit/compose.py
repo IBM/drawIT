@@ -193,7 +193,7 @@ class Compose:
       nodes[self.common.compress(internetid)] = attributes
       self.attributes.updateSequence(self.common.compress(internetid))
 
-      attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(userid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "fontname": '', "fontsize": 0}
+      attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(userid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
 
       internetedgeid = randomid()
       edges[self.common.compress(internetedgeid)] = attributes
@@ -283,7 +283,7 @@ class Compose:
                self.attributes.updateSequence(self.common.compress(subnetpubgateid))
 
                # TODO Make single arrow.
-               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetid), "targetid": self.common.compress(subnetpubgateid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "fontname": '', "fontsize": 0}
+               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetid), "targetid": self.common.compress(subnetpubgateid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -291,7 +291,7 @@ class Compose:
 
                # TODO Make single arrow.
                #routername = vpcname + '-router'
-               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetpubgateid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "fontname": '', "fontsize": 0}
+               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetpubgateid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -302,7 +302,7 @@ class Compose:
 
             else:
                # TODO Make single arrow.
-               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetid), "targetid": self.common.compress(subnetpubgateid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "fontname": '', "fontsize": 0}
+               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetid), "targetid": self.common.compress(subnetpubgateid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -510,7 +510,7 @@ class Compose:
                               self.attributes.updateSequence(self.common.compress(lbid))
 
                               #routername = vpcname + '-router'
-                              attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(lbid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "fontname": '', "fontsize": 0}
+                              attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(lbid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
 
                               edgeid = randomid()
                               edges[self.common.compress(edgeid)] = attributes
@@ -518,7 +518,7 @@ class Compose:
 
                            # label, source, target
                            #instancelink = self.shapes.buildDoubleArrow('', nicid, lbid, None)
-                           attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(instanceid), "targetid": self.common.compress(lbid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "fontname": '', "fontsize": 0}
+                           attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(instanceid), "targetid": self.common.compress(lbid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
 
                            edgeid = randomid()
                            edges[self.common.compress(edgeid)] = attributes

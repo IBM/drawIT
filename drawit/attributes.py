@@ -81,6 +81,12 @@ class Attributes:
    def setEdgeEndArrow(self, shapeid, endarrow):
       self.edges[shapeid]["endarrow"] = endarrow 
 
+   def setEdgeStartFill(self, shapeid, startfill):
+      self.edges[shapeid]["startfill"] = startfill 
+
+   def setEdgeEndFill(self, shapeid, endfill):
+      self.edges[shapeid]["endfill"] = endfill 
+
    def setEdgeOperator(self, shapeid, operator):
       self.edges[shapeid]["operator"] = operator
 

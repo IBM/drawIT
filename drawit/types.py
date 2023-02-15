@@ -34,10 +34,22 @@ class Types:
       self.elements = Elements(self.data)
       random.seed(time.time())
 
-   def buildLink(self, id, label, source, target, startarrow, endarrow, meta):
+   def buildLink(self, id, label, source, target, startarrow, endarrow, startfill, endfill, meta):
+      style = 'dashed=0;'
+
+      if startarrow != "":
+         style += 'startArrow=' + startarrow + ';startFill=' + ('1' if startfill else '0')+ ';'
+         if startarrow == "oval":
+           style += "sourcePerimeterSpacing=4;"
+
+      if endarrow != "":
+         style += 'endArrow=' + endarrow + ';endFill=' + ('1' if endfill else '0') + ';'
+         if endarrow == "oval":
+           style += "targetPerimeterSpacing=4;"
+
       data = {'header': {'id': id,
                          'label': ''},
-              'cell':   {'style': 'endArrow=' + endarrow + ';endFill=1;startArrow=' + startarrow + ';startFill=1;dashed=1;',
+              'cell':   {'style': style,
                          'edge': '1',
                          'parent': '1',
                          'source': source,
@@ -46,10 +58,26 @@ class Types:
                          'as': 'geometry'}}
       return data
 
-   def buildSolidLink(self, id, label, source, target, startarrow, endarrow, meta):
+   def buildSolidLink(self, id, label, source, target, startarrow, endarrow, startfill, endfill, meta):
+      style = 'dashed=0;'
+
+      if startarrow == "":
+         style += 'startArrow=none;startFill=0;'
+      else:
+         style += 'startArrow=' + startarrow + ';startFill=' + ('1' if startfill else '0')+ ';'
+         if startarrow == "oval":
+           style += "sourcePerimeterSpacing=4;"
+
+      if endarrow == "":
+         style += 'endArrow=none;endFill=0;'
+      else:
+         style += 'endArrow=' + endarrow + ';endFill=' + ('1' if endfill else '0') + ';'
+         if endarrow == "oval":
+           style += "targetPerimeterSpacing=4;"
+
       data = {'header': {'id': id,
                          'label': label},
-              'cell':   {'style': 'endArrow=' + endarrow + ';endFill=1;startArrow=' + startarrow + ';startFill=1;dashed=0;',
+              'cell':   {'style': style,
                          'edge': '1',
                          'parent': '1',
                          'source': source,
@@ -58,22 +86,46 @@ class Types:
                          'as': 'geometry'}}
       return data
 
-   def buildSolidLinkSingleArrow(self, id, label, source, target, startarrow, endarrow, meta):
-         data = {'header': {'id': id,
-                            'label': label},
-                 'cell':   {'style': 'endArrow=' + endarrow + ';endFill=1;startArrow=' + startarrow + ';startFill=1;dashed=0;',
-                            'edge': '1',
-                            'parent': '1',
-                            'source': source,
-                            'target': target},
-                  'geo':   {'relative': '1',
-                            'as': 'geometry'}}
-         return data
+   def buildSolidLinkSingleArrow(self, id, label, source, target, startarrow, endarrow, startfill, endfill, meta):
+      style = 'dashed=0;'
 
-   def buildSolidLinkDoubleArrow(self, id, label, source, target, startarrow, endarrow, meta):
+      if startarrow != "":
+         style += 'startArrow=' + startarrow + ';startFill=' + ('1' if startfill else '0')+ ';'
+         if startarrow == "oval":
+           style += "sourcePerimeterSpacing=4;"
+
+      if endarrow != "":
+         style += 'endArrow=' + endarrow + ';endFill=' + ('1' if endfill else '0') + ';'
+         if endarrow == "oval":
+           style += "targetPerimeterSpacing=4;"
+
       data = {'header': {'id': id,
                          'label': label},
-              'cell':   {'style': 'endArrow=' + endarrow + ';endFill=1;startArrow=' + startarrow + ';startFill=1;dashed=0;',
+              'cell':   {'style': style,
+                         'edge': '1',
+                         'parent': '1',
+                         'source': source,
+                         'target': target},
+               'geo':   {'relative': '1',
+                         'as': 'geometry'}}
+      return data
+
+   def buildSolidLinkDoubleArrow(self, id, label, source, target, startarrow, endarrow, startfill, endfill, meta):
+      style = 'dashed=0;'
+
+      if startarrow != "":
+         style += 'startArrow=' + startarrow + ';startFill=' + ('1' if startfill else '0')+ ';'
+         if startarrow == "oval":
+           style += "sourcePerimeterSpacing=4;"
+
+      if endarrow != "":
+         style += 'endArrow=' + endarrow + ';endFill=' + ('1' if endfill else '0') + ';'
+         if endarrow == "oval":
+           style += "targetPerimeterSpacing=4;"
+
+      data = {'header': {'id': id,
+                         'label': label},
+              'cell':   {'style': style,
                          'edge': '1',
                          'parent': '1',
                          'source': source,

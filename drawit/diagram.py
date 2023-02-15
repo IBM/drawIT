@@ -265,7 +265,8 @@ class Node:
    def __lshift__(self, shape = None):
       # shape << shape or shape << edge
       if isinstance(shape, Cluster) or isinstance(shape, Node):
-         edge = Edge(sourceid=shape.shapeid, targetid=self.shapeid, operator="lshift", fontname=self.fontname, fontsize=12)
+         #edge = Edge(sourceid=shape.shapeid, targetid=self.shapeid, operator="lshift", fontname=self.fontname, fontsize=12)
+         edge = Edge(sourceid=shape.shapeid, targetid=self.shapeid, startarrow="", endarrow="classic", operator="lshift", fontname=self.fontname, fontsize=12)
       else:  # isinstance(shape, Edge)
          shape.sourceid = self.shapeid
          #shape.startarrow = ""
@@ -276,7 +277,8 @@ class Node:
    def __rshift__(self, shape = None):
       # shape >> shape or shape >> edge
       if isinstance(shape, Cluster) or isinstance(shape, Node):
-         edge = Edge(sourceid=self.shapeid, targetid=shape.shapeid, color = "", operator="rshift", fontname=self.fontname, fontsize=12)
+         #edge = Edge(sourceid=self.shapeid, targetid=shape.shapeid, color = "", operator="rshift", fontname=self.fontname, fontsize=12)
+         edge = Edge(sourceid=self.shapeid, targetid=shape.shapeid, startarrow="", endarrow="classic", operator="rshift", fontname=self.fontname, fontsize=12)
       else:  # isinstance(shape, Edge)
          shape.sourceid = self.shapeid
          #shape.startarrow = ""
@@ -295,6 +297,8 @@ class Edge:
    color = ""
    startarrow = ""
    endarrow = ""
+   startfill = ""
+   endfill = ""
    #operator = ""
    #style = ""
    node = None
@@ -307,8 +311,10 @@ class Edge:
                 reverse = False,   # Not currently used.
                 color = "",        # Not currently used.
                 style = "",        # Not currently used.
-                startarrow = "",
-                endarrow = "",
+                startarrow = "classic",
+                endarrow = "classic",
+                startfill = True,
+                endfill = True,
                 fontname = "",
                 fontsize = 0,
                 operator = "",     # Internal use only.
@@ -318,10 +324,13 @@ class Edge:
       self.shapeid = randomid()
 
       self.color = color
+
       self.startarrow = startarrow
       self.endarrow = endarrow
+      self.startfill = startfill
+      self.endfill = endfill
 
-      self.attributes = {"type": "edge", "label": label, "sourceid": sourceid, "targetid": targetid, "color": color, "style": style, "startarrow": startarrow, "endarrow": endarrow, "fontname": fontname, "fontsize": fontsize}
+      self.attributes = {"type": "edge", "label": label, "sourceid": sourceid, "targetid": targetid, "color": color, "style": style, "startarrow": startarrow, "endarrow": endarrow, "startfill": startfill, "endfill": endfill, "fontname": fontname, "fontsize": fontsize}
 
       _data.addEdge(self.shapeid, self.attributes)
       _data.updateSequence(self.shapeid)
@@ -336,6 +345,8 @@ class Edge:
             _data.setEdgeTargetID(self.shapeid, shape.shapeid)
             _data.setEdgeStartArrow(self.shapeid, self.startarrow)
             _data.setEdgeEndArrow(self.shapeid, self.endarrow)
+            _data.setEdgeStartFill(self.shapeid, self.startfill)
+            _data.setEdgeEndFill(self.shapeid, self.endfill)
             _data.setEdgeOperator(self.shapeid, self.operator)
          else:
             # Minus has precedence over << and sourceid hasn't been set.
@@ -344,6 +355,8 @@ class Edge:
             _data.setEdgeTargetID(self.shapeid, shape.shapeid)
             _data.setEdgeStartArrow(self.shapeid, self.startarrow)
             _data.setEdgeEndArrow(self.shapeid, self.endarrow)
+            _data.setEdgeStartFill(self.shapeid, self.startfill)
+            _data.setEdgeEndFill(self.shapeid, self.endfill)
             _data.setEdgeOperator(self.shapeid, self.operator)
             print("Edge.__sub__: shape << edge - shape not supported")
             sys_exit()
@@ -364,10 +377,14 @@ class Edge:
             # Double arrow.
             _data.setEdgeStartArrow(self.shapeid, self.startarrow)
             _data.setEdgeEndArrow(self.shapeid, self.endarrow)
+            _data.setEdgeStartFill(self.shapeid, self.startfill)
+            _data.setEdgeEndFill(self.shapeid, self.endfill)
          else:
             # Single arrow.
             _data.setEdgeStartArrow(self.shapeid, self.startarrow)
             _data.setEdgeEndArrow(self.shapeid, self.endarrow)
+            _data.setEdgeStartFill(self.shapeid, self.startfill)
+            _data.setEdgeEndFill(self.shapeid, self.endfill)
       else:
          print("Edge.__lshift__: edge << shape not supported")
          sys_exit()
@@ -384,10 +401,14 @@ class Edge:
             # Double arrow.
             _data.setEdgeStartArrow(self.shapeid, self.startarrow)
             _data.setEdgeEndArrow(self.shapeid, self.endarrow)
+            _data.setEdgeStartFill(self.shapeid, self.startfill)
+            _data.setEdgeEndFill(self.shapeid, self.endfill)
          else:
             # Single arrow.
             _data.setEdgeStartArrow(self.shapeid, self.startarrow)
             _data.setEdgeEndArrow(self.shapeid, self.endarrow)
+            _data.setEdgeStartFill(self.shapeid, self.startfill)
+            _data.setEdgeEndFill(self.shapeid, self.endfill)
       else:
          print("Edge.__rshift__: edge >> shape not supported")
          sys_exit()

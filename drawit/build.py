@@ -237,6 +237,8 @@ class Build:
       targetid = attributes["targetid"]
       startarrow = attributes["startarrow"]
       endarrow = attributes["endarrow"]
+      startfill = attributes["startfill"]
+      endfill = attributes["endfill"]
       label = attributes["label"]
 
       '''
@@ -249,11 +251,12 @@ class Build:
       '''
 
       if startarrow == "" and endarrow == "":
-         edgenode = self.shapes.buildSolidLink(edgeid, label, sourceid, targetid, startarrow, endarrow, None)
-      elif startarrow == "classic" and endarrow == "classic":
-         edgenode = self.shapes.buildDoubleArrow(edgeid, label, sourceid, targetid, startarrow, endarrow, None)
-      elif endarrow == "classic":
-         edgenode = self.shapes.buildSingleArrow(edgeid, label, sourceid, targetid, startarrow, endarrow, None)
+         edgenode = self.shapes.buildSolidLink(edgeid, label, sourceid, targetid, startarrow, endarrow, startfill, endfill, None)
+      elif startarrow != "" and endarrow != "":
+         edgenode = self.shapes.buildDoubleArrow(edgeid, label, sourceid, targetid, startarrow, endarrow, startfill, endfill, None)
+      #elif startarrow != "" or endarrow != "":
+      else:
+         edgenode = self.shapes.buildSingleArrow(edgeid, label, sourceid, targetid, startarrow, endarrow, startfill, endfill, None)
 
       links.append(edgenode)
 
