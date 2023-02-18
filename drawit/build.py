@@ -762,7 +762,8 @@ class Build:
    def calculateIsolatedNodes(self):
       mintopspace = 60
       minshapespace = 20
-      minnodespace = 60
+      #minnodespace = 60
+      minnodespace = 80
       minnodewidth = 48
       minnodeheight = 48
       minclusterwidth = 240
@@ -843,7 +844,8 @@ class Build:
    def calculateLeftRightClusters(self, parentid):
       mintopspace = 60
       minshapespace = 20
-      minnodespace = 60
+      #minnodespace = 60
+      minnodespace = 80
       minnodewidth = 48
       minnodeheight = 48
       minclusterwidth = 240
@@ -932,7 +934,8 @@ class Build:
    def calculateTopBottomClusters(self, parentid):
       mintopspace = 60
       minshapespace = 20
-      minnodespace = 60
+      #minnodespace = 60
+      minnodespace = 80
       minnodewidth = 48
       minnodeheight = 48
       minclusterwidth = 240
@@ -1021,7 +1024,8 @@ class Build:
    def calculateLeftRightNodes(self, parentid, parentgeometry):
       mintopspace = 60
       minshapespace = 20
-      minnodespace = 60
+      #minnodespace = 60
+      minnodespace = 80
       minnodewidth = 48
       minnodeheight = 48
       minclusterwidth = 240
@@ -1106,7 +1110,8 @@ class Build:
    def calculateTopBottomNodes(self, parentid, parentgeometry):
       mintopspace = 60
       minshapespace = 20
-      minnodespace = 60
+      #minnodespace = 60
+      minnodespace = 80
       minnodewidth = 48
       minnodeheight = 48
       minclusterwidth = 240

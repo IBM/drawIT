@@ -344,14 +344,21 @@ class Compose:
 
             for nicframe in nics:
                nicname = nicframe['name']
-               nicinstanceid = instanceframe['id'] if self.common.isInputRIAS() else nicframe['instanceId']
-
-               nicip = nicframe['primary_ip']['address'] if self.common.isInputRIAS() else nicframe['ip']
+               if self.common.isInputTerraform():
+                  nicinstanceid = nicframe["id"]
+                  nicip = nicframe['primary_ipv4_address']
+               else:
+                  nicinstanceid = instanceframe['id'] if self.common.isInputRIAS() else nicframe['instanceId']
+                  nicip = nicframe['primary_ip']['address'] if self.common.isInputRIAS() else nicframe['ip']
                if nicips == '':
                   nicips = nicip
                else:
                   nicips = nicips + '<br>' + nicip
                nicid = nicframe['id']
+
+               if self.common.isInputTerraform():
+                   # TODO: target.id not defined
+                  continue
 
                fipframe = self.data.getFloatingIP(nicid)
                if len(fipframe) > 0:

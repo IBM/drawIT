@@ -62,7 +62,8 @@ class Load:
          #self.analyzeInstances()
          self.analyzeSubnetIcons()
          #self.analyzeServiceIcons()
-         self.analyzeLoadBalancers()
+         if not self.common.isInputTerraform():
+            self.analyzeLoadBalancers()
          return True
 
       return False
@@ -132,7 +133,7 @@ class Load:
             continue
 
          subnetvpcid = subnetframe['vpc.id']
-         subnetvpcname = subnetframe['vpc.name']
+         #subnetvpcname = subnetframe['vpc.name']
 
          # If invalid vpc then print error and drop subnet.
          vpcframe = self.findRow(vpcs, 'id', subnetvpcid)
@@ -169,7 +170,7 @@ class Load:
          else:
             subnetregion = subnetframe['region']
          subnetvpcid = subnetframe['vpc.id']
-         subnetvpcname = subnetframe['vpc.name']
+         #subnetvpcname = subnetframe['vpc.name']
 
          # Add subnets to zoneTable ordered by vpcid+zonename.
          zonekey = subnetvpcid + ':' + subnetzonename
@@ -236,7 +237,10 @@ class Load:
                for nicframe in nics:
                   #nicname = nicframe['name']
                   #nicid = nicframe['id']
-                  nicsubnetid = nicframe['subnet']['id'] if self.common.isInputRIAS() else nicframe['networkId']
+                  if self.common.isInputTerraform():
+                     nicsubnetid = nicframe['subnet']
+                  else:
+                     nicsubnetid = nicframe['subnet']['id'] if self.common.isInputRIAS() else nicframe['networkId']
 
                   if nicsubnetid in self.subnetIconTable:
                      if addedInstance == False:

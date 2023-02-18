@@ -89,69 +89,176 @@ class Terraform:
       loadBalancerPoolInstances = df[df["type"] == "ibm_is_lb_pool"]["instances"]
       loadBalancerMemberInstances = df[df["type"] == "ibm_is_lb_pool_member"]["instances"]
 
+      count = 0
+      tempvpcs = {}
       for instances in vpcInstances: 
          for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            tempvpcs[instanceid] = instanceattributes
-            #print(json_dumps(instance["attributes"], indent=4))
-      self.vpcs = DataFrame.from_dict(tempvpcs)
+            instancerow = {"id": instanceid} | instanceattributes
+         #tempvpcs[instanceid] = instanceattributes
+         tempvpcs[count] = instancerow
+         count += 1
+         #print(json_dumps(instance["attributes"], indent=4))
 
+      if tempvpcs != {}:
+         self.vpcs = DataFrame.from_dict(tempvpcs, orient="index")
+      else:
+         self.vpcs = DataFrame()
+
+      count = 0
+      tempsubnets = {}
       for instances in subnetInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            tempsubnets[instanceid] = instanceattributes
-      self.subnets = DataFrame.from_dict(tempsubnets)
+            region = instanceattributes["zone"]
+            regionindex = region.rfind('-')
+            region = region[0:regionindex]
+            instancerow = {"id": instanceid, "region": region} | instanceattributes
+         #tempsubnets[instanceid] = instanceattributes
+         tempsubnets[count] = instancerow
+         count += 1
 
+      if tempsubnets != {}:
+         self.subnets = DataFrame.from_dict(tempsubnets, orient="index")
+
+         self.subnets.rename(
+            columns={'zone': 'zone.name',
+                     'vpc': 'vpc.id'}, inplace=True)
+
+         self.subnets['vpc.name'] = self.subnets['vpc.id']
+      else:
+         self.subnets = DataFrame()
+
+      count = 0
+      tempinstances = {}
       for instances in instanceInstances:
           for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            tempinstances[instanceid] = instanceattributes
-      self.instances = DataFrame.from_dict(tempinstances)
+            instancerow = {"id": instanceid} | instanceattributes
+          #tempinstances[instanceid] = instanceattributes
+          tempinstances[count] = instancerow
+          count += 1
 
+      if tempinstances != {}:
+         self.instances = DataFrame.from_dict(tempinstances, orient="index")
+
+         #self.instances.rename(
+         #   columns={'network_interfaces': 'networkInterfaces'}, inplace=True)
+         self.instances.rename(
+            columns={'primary_network_interface': 'networkInterfaces'}, inplace=True)
+
+         self.instances['type'] = 'Instance'
+      else:
+         self.instances = DataFrame()
+
+      count = 0
+      temppublicGateways = {}
       for instances in publicGatewayInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            temppublicGateways[instanceid] = instanceattributes
-      self.publicGateways = DataFrame.from_dict(temppublicGateways)
+            instancerow = {"id": instanceid} | instanceattributes
+         #temppublicGateways[instanceid] = instanceattributes
+         temppublicGateways[count] = instancerow
+         count += 1
 
+      if temppublicGateways != {}:
+         self.publicGateways = DataFrame.from_dict(temppublicGateways, orient="index")
+      else:
+         self.publicGateways = DataFrame()
+
+      count = 0
+      tempfloatingIPs = {}
       for instances in floatingIPInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            tempfloatingIPs[instanceid] = instanceattributes
-      self.floatingIPs = DataFrame.from_dict(tempfloatingIPs)
+            instancerow = {"id": instanceid} | instanceattributes
+         #tempfloatingIPs[instanceid] = instanceattributes
+         tempfloatingIPs[count] = instancerow
+         count += 1
 
+      if tempfloatingIPs != {}:
+         self.floatingIPs = DataFrame.from_dict(tempfloatingIPs, orient="index")
+      else:
+         self.floatingIPs = DataFrame()
+
+      count = 0
+      temploadBalancers = {}
       for instances in loadBalancerInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            temploadBalancers[instanceid] = instanceattributes
-      self.loadBalancers = DataFrame.from_dict(temploadBalancers)
+            instancerow = {"id": instanceid} | instanceattributes
+         #temploadBalancers[instanceid] = instanceattributes
+         temploadBalancers[count] = instancerow
+         count += 1
 
+      if temploadBalancers != {}:
+         self.loadBalancers = DataFrame.from_dict(temploadBalancers, orient="index")
+      else:
+         self.loadBalancers = DataFrame()
+
+      count = 0
+      temploadBalancerListeners = {}
       for instances in loadBalancerListenerInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            temploadBalancerListeners[instanceid] = instanceattributes
-      self.loadBalancerListeners = DataFrame.from_dict(temploadBalancerListeners)
+            instancerow = {"id": instanceid} | instanceattributes
+         #temploadBalancerListeners[instanceid] = instanceattributes
+         temploadBalancerListeners[count] = instancerow
+         count += 1
 
+      if temploadBalancerListeners != {}:
+         self.loadBalancerListeners = DataFrame.from_dict(temploadBalancerListeners, orient="index")
+      else:
+         self.loadBalancerListeners = DataFrame()
+
+      count = 0
+      temploadBalancerPools = {}
       for instances in loadBalancerPoolInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            temploadBalancerPools[instanceid] = instanceattributes
-      self.loadBalancerPools = DataFrame.from_dict(temploadBalancerPools)
+            instancerow = {"id": instanceid} | instanceattributes
+         #temploadBalancerPools[instanceid] = instanceattributes
+         temploadBalancerPools[count] = instancerow
+         count += 1
 
+      if temploadBalancerPools != {}:
+         self.loadBalancerPools = DataFrame.from_dict(temploadBalancerPools, orient="index")
+      else:
+         self.loadBalancerPools = DataFrame()
+
+      count = 0
+      temploadBalancerMembers = {}
       for instances in loadBalancerMemberInstances:
-          for instance in instances:
+         for instance in instances:
             instanceattributes = instance["attributes"]
             instanceid = instanceattributes["id"]
-            temploadBalancerMembers[instanceid] = instanceattributes
-      self.loadBalancerMembers = DataFrame.from_dict(temploadBalancerMembers)
+            instancerow = {"id": instanceid} | instanceattributes
+         #temploadBalancerMembers[instanceid] = instanceattributes
+         temploadBalancerMembers[count] = instancerow
+         count += 1
+
+      if temploadBalancerMembers != {}:
+         self.loadBalancerMembers = DataFrame.from_dict(temploadBalancerMembers, orient="index")
+      else:
+         self.loadBalancerMembers = DataFrame()
+
+      self.clusters = DataFrame()
+      self.vpnGateways = DataFrame()
+      self.vpnConnections = DataFrame()
+      self.vpeGateways = DataFrame()
+      self.volumes = DataFrame()
+      self.networkACLs = DataFrame()
+      self.securityGroups = DataFrame()
+      self.services = DataFrame()
+      self.keys = DataFrame()
 
       #if self.data != None:
       #   self.normalizeData()

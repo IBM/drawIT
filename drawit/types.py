@@ -191,7 +191,8 @@ class Types:
       #iconname, tempcolor = self.icons.getIcon(tempname)
 
       shapelabel = "<b style='font-weight:600'>%Primary-Label%</b><br>%Secondary-Text%"
-      labelsize = 30
+      #labelsize = 30
+      labelsize = 24
 
       if len(name) > 0:
          name = self.common.truncateText(name, labelsize, '<br>')

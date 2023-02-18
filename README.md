@@ -5,7 +5,9 @@ Automate creation of diagrams.
 
 Automate creation of diagrams that can be viewed in IBM2 on the diagrams.net desktop.
 
-The [IBM2 Beta](https://github.com/IBM/it-architecture-diagrams/releases) of the diagrams.net desktop is currently available for Mac only and will be available for both Mac and Windows when IBM2 is published.  Note that the IBM2 Beta is subject to change until the final version is published.
+The [IBM2 Beta](https://github.com/IBM/it-architecture-diagrams/releases) of the diagrams.net desktop is currently available for Mac only and will be available for both Mac and Windows when IBM2 is published.  
+
+Note that IBM2 diagrams.net desktop and drawIT are subject to change.
 
 --- 
 
@@ -16,7 +18,7 @@ The [IBM2 Beta](https://github.com/IBM/it-architecture-diagrams/releases) of the
   - Output is diagrams.net xml file.
   - Refer to Code-to-Diagram Guide below.
 2. JSON-to-Diagram:
-  - Input is from JSON/YAML for existing infrastructure.
+  - Input is from JSON/YAML (tool-generated or Terraform) for existing infrastructure.
   - Output is diagrams.net xml file.
   - Refer to JSON-to-Diagram Guide below.
 3. RIAS-to-Diagram:
@@ -297,7 +299,7 @@ Font Names:
 ## JSON-to-Diagram Guide
 
 <p>
-Refer to rungui.sh or run.sh in scripts folder.
+Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 </p>
 
 <details><summary>Features Supported</summary>
@@ -337,7 +339,7 @@ Refer to rungui.sh or run.sh in scripts folder.
 - [ ] Snapshots
 - [ ] Keys
 - [ ] Shares
-- [ ] IKS Clusters
+- [ ] IKS Clusters (include VSIs in clusters)
 - [ ] IKS VPC LB
 
 </details>
@@ -387,7 +389,7 @@ Refer to rungui.sh or runrias.sh in scripts folder.
 - [ ] Snapshots
 - [ ] Keys
 - [ ] Shares
-- [ ] IKS Clusters
+- [ ] IKS Clusters (include VSIs in clusters)
 - [ ] IKS VPC LB
 
 </details>
