@@ -244,7 +244,9 @@ class Compose:
             zonelink = self.shapes.buildLink(regionzonename + ':' + subnetname, regionzonename, subnetname, None)
          '''
 
-         if 'public_gateway.id' in subnetframe:
+         if self.common.isInputTerraform():
+            subnetpubgateid = subnetframe['public_gateway']
+         elif 'public_gateway.id' in subnetframe:
             subnetpubgateid = subnetframe['public_gateway.id']
          else:
             subnetpubgateid = None
@@ -254,13 +256,16 @@ class Compose:
          if subnetpubgateid != None:
             pubgateframe = self.data.getPublicGateway(subnetpubgateid)
             if len(pubgateframe) > 0:
-               if self.common.isInputRIAS(): 
+               if self.common.isInputRIAS():
                   pubgatefipip = pubgateframe['floating_ip.address']
+               elif self.common.isInputTerraform(): 
+                  pubgatefip = pubgateframe['floating_ip']
+                  pubgatefipip = pubgatefip['address']
                else: # yaml
                   pubgatefipip = pubgateframe['floatingIP']
                pubgatename = pubgateframe['name']
 
-         clusters, nodes, edges = self.composeSubnetIcons(subnetid, subnetname, subnetvpcname, vpcname, clusters, nodes, edges)
+         clusters, nodes, edges = self.composeSubnetIcons(subnetid, subnetname, subnetvpcname, vpcname, clusters, nodes, edges, internetid)
 
          bastion = False
          if subnetname.lower().find("bastion") != -1:
@@ -312,7 +317,7 @@ class Compose:
 
       return clusters, nodes, edges
 
-   def composeSubnetIcons(self, subnetid, subnetname, subnetvpcname, vpcname, clusters, nodes, edges):
+   def composeSubnetIcons(self, subnetid, subnetname, subnetvpcname, vpcname, clusters, nodes, edges, internetid):
       attributes = {}
 
       icons = self.data.getSubnetIconTable(subnetid)
@@ -355,10 +360,6 @@ class Compose:
                else:
                   nicips = nicips + '<br>' + nicip
                nicid = nicframe['id']
-
-               if self.common.isInputTerraform():
-                   # TODO: target.id not defined
-                  continue
 
                fipframe = self.data.getFloatingIP(nicid)
                if len(fipframe) > 0:
@@ -405,14 +406,19 @@ class Compose:
             else:
                meta = None
 
-            '''
             if nicfipip != None:
-               if self.common.isLinks():
-                  routername = vpcname + '-router'
-                  iplabel =  "fip:" + nicfipip
-                  fiplink = self.shapes.buildDoubleArrow(iplabel, instanceid, routername, None)
-                  links.append(fiplink)
-            '''
+               #if self.common.isLinks():
+               routername = vpcname + '-router'
+               iplabel =  "fip:" + nicfipip
+               #fiplink = self.shapes.buildDoubleArrow(iplabel, instanceid, routername, None)
+               #links.append(fiplink)
+
+               attributes = {"type": "edge", "label": iplabel, "sourceid": self.common.compress(instanceid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+
+               fipedgeid = randomid()
+               edges[self.common.compress(fipedgeid)] = attributes
+               self.attributes.updateSequence(self.common.compress(fipedgeid))
+
          elif icontype.lower() == 'vpngateway':
             icontype = "vpngateway"  # NEW
             secondarytext = ''
@@ -448,6 +454,10 @@ class Compose:
 
                   if self.common.isInputRIAS():
                      lbispublic = lb['is_public']
+                     lbprivateips = lb['private_ips']
+                     lbpublicips = lb['public_ips']
+                  elif self.common.isInputTerraform():
+                     lbispublic = lb['type'] == "public"
                      lbprivateips = lb['private_ips']
                      lbpublicips = lb['public_ips']
                   else:  # yaml

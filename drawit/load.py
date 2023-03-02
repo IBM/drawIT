@@ -15,6 +15,8 @@
 
 from math import isnan
 
+from pandas import concat, DataFrame
+
 from .common import Common
 from .file import File
 from .rias import RIAS
@@ -62,7 +64,10 @@ class Load:
          #self.analyzeInstances()
          self.analyzeSubnetIcons()
          #self.analyzeServiceIcons()
-         if not self.common.isInputTerraform():
+         if self.common.isInputTerraform():
+            #self.analyzeTerraformLoadBalancers()
+            return True
+         else:
             self.analyzeLoadBalancers()
          return True
 
@@ -409,6 +414,106 @@ class Load:
 
       return
 
+   def analyzeTerraformLoadBalancers(self):
+      listenerdata = []
+      pooldata = []
+      memberdata = []
+
+      lbdata = self.data.getLoadBalancers()
+      if not lbdata.empty:
+         for lbindex, lb in lbdata.iterrows():
+            lbpools = []
+            lbmembers = []
+
+            lbid = lb['id']
+
+            lbname = lb['name']
+            if lbname[0:4] == 'kube':
+               continue
+
+            #lblisteners = lb['listeners']
+
+            pooldatatemp = self.data.getLoadBalancerPools() 
+            if not pooldatatemp.empty:
+                for poolindex, lbpool in pooldatatemp.iterrows():
+                   poolid = lbpool['pool_id']
+                   poollb = lbpool['lb']
+                   if poollb != lbid:
+                      continue
+                   #lbpools.append(dict(lbpool))
+
+                   memberdata = self.data.getLoadBalancerMembers()
+                   if not memberdata.empty:
+                      for memberindex, lbmember in memberdata.iterrows():
+                         memberpool = lbmember['pool']
+                         memberlb = lbmember['lb']
+                         if memberlb != lbid:
+                            continue
+                         lbmembers.append(dict(lbmember))
+
+                      if lbmembers:
+                         lbpool['members'] = lbmembers
+
+                   lbpools.append(dict(lbpool))
+
+                if lbpools:
+                   lb['pools'] = lbpools
+
+            lbpools = lb['pools']
+            if not hasattr(lbpools, '__iter__'):
+               self.common.printMissingPool(lbname)
+               continue
+
+            vpcid = None
+
+            if lbpools:
+               for lbpool in lbpools:
+                  lbpoolid = lbpool['id']
+                  lbpoolname = lbpool['name']
+
+                  extended = lbpool
+                  extended['lbid'] = lbid
+                  pooldata.append(extended)
+
+                  lbpoolid = extended['lbid']
+
+                  poolmemberdata = []
+
+                  if not 'members' in lbpool:
+                     self.common.printMissingMember(lbname, lbpoolname)
+                     continue
+
+                  lbmembers = lbpool['members']
+                  if lbmembers:
+                     for lbmember in lbmembers:
+                        if lbmember:
+                           #if lbmember['health'] == 'ok':
+                           poolmemberdata.append(lbmember)
+
+                           if vpcid == None:
+                              instancedata = self.data.getInstances()
+                              instanceIP = lbmember['target_address']
+                              if instanceIP != None:
+                                 instance = self.getInstanceByIP(instanceIP)
+
+                                 if len(instance) == 0:
+                                    vpcid = None
+                                    self.common.printInvalidInstanceMember(lbname, lbpoolname, instanceId)
+                                    continue
+
+                                 vpcid = instance['vpc']
+
+                  if poolmemberdata and vpcid != None:
+                     #extended = {vpcid: {lbid: [ poolmemberdata ] }}
+                     extended = {lbid: { lbpoolid: poolmemberdata }}
+                     #memberdata.append(extended)
+                     if vpcid in self.lbTable:
+                        self.lbTable[vpcid].append(extended)
+                     else:
+                        self.lbTable[vpcid] = [extended]
+
+      return
+
    def findRow(self, dictionarylist, columnname, columnvalue):
       if len(dictionarylist) > 0:
          for dictionaryindex, dictionary in dictionarylist.iterrows():
@@ -507,6 +612,17 @@ class Load:
    def getInstance(self, id):
       return self.findRow(self.data.getInstances(), 'id', id)
 
+   def getInstanceByIP(self, ip):
+      instances = self.data.getInstances()
+      if not instances.empty:
+         for instanceindex, instance in instances.iterrows():
+            nics = instance['networkInterfaces']
+            for nic in nics:
+               nicip = nic['primary_ipv4_address']
+               if ip == nicip:
+                  return instance
+      return None
+
    def getNetworkInterface(self, id1, id2):
       return self.findRow2( self.data.getNetworkInterfaces(), 'primary_ip.address', id1, 'instance.id', id2)
 
@@ -523,7 +639,10 @@ class Load:
       return self.findRow(self.data.getVPCs(), 'id', id)
 
    def getFloatingIP(self, id):
-      return self.findRow(self.data.getFloatingIPs(), 'target.id', id)
+      if self.common.isInputTerraform():
+         return self.findRow(self.data.getFloatingIPs(), 'target', id)
+      else:
+         return self.findRow(self.data.getFloatingIPs(), 'target.id', id)
 
    def getPublicGateway(self, id):
       return self.findRow(self.data.getPublicGateways(), 'id', id)

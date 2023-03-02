@@ -1248,7 +1248,7 @@ class Build:
 
    def alternateChild(self, clusterid, lastColor):
       attributes = self.clusters[clusterid]
-      if attributes["shape"].upper() == "ZONE" or  self.common.isAlternateNone():
+      if attributes["shape"].upper() == "ZONE" or self.common.isAlternateNone():
          attributes["bgcolor"] = "none"
       elif lastColor == "WHITE":
          pencolor = attributes["pencolor"]

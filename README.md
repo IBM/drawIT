@@ -268,30 +268,49 @@ Font Names:
 
 <p>
 
-[slz-vsi.py](examples/slz-vsi.py)
+[vpc-secure-landing-zone.py](examples/secure-landing-zone/vpc-secure-landing-zone.py)
 
-<img src="/examples/slz-vsi.svg">
-
-</p>
-
-<p>
-
-[slz-mixed.py](examples/slz-mixed.py)
-
-<img src="/examples/slz-mixed.svg">
+<img src="/examples/secure-landing-zone/vpc-secure-landing-zone.svg">
 
 </p>
 
 <p>
 
-[slz-openshift.py](examples/slz-openshift.py)
+[mixed-secure-landing-zone.py](examples/secure-landing-zone/mixed-secure-landing-zone.py)
 
-<img src="/examples/slz-openshift.svg">
+<img src="/examples/secure-landing-zone/mixed-secure-landing-zone.svg">
+
+</p>
+
+<p>
+
+[openshift-secure-landing-zone.py](examples/secure-landing-zone/openshift-secure-landing-zone.py)
+
+<img src="/examples/secure-landing-zone/openshift-secure-landing-zone.svg">
 
 </p>
 
 </details>
 
+<details><summary>VPC Single Region</summary>
+
+<p>
+
+[vpc-single-region-consumer-internet.py](examples/vpc-single-region/vpc-single-region-consumer-internet.py)
+
+</p>
+
+<p>
+
+[vpc-single-region-consumer-intranet.py](examples/vpc-single-region/vpc-single-region-consumer-intranet.py)
+
+</p>
+
+<p>
+
+[vpc-single-region-consumer-private-link.py](examples/vpc-single-region/vpc-single-region-consumer-private-link.py)
+
+</p>
 </details>
 
 --- 
