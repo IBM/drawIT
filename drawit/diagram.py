@@ -75,7 +75,7 @@ class Diagram:
       self.common = Common()
       self.diagramid = randomid()
 
-      self.attributes = {"type": "diagram", "name": name, "filename": filename, "direction": direction, "alternate": alternate, "provider": provider, "fontname": fontname, "fontsize": fontsize,  "outformat": outformat}
+      self.attributes = _data.getDiagramAttributes(name=name, filename=filename, direction=direction, alternate=alternate, provider=provider, fontname=fontname, fontsize=fontsize,  outformat=outformat)
       #_diagrams[self.diagramid] = self.attributes
       _data.addDiagram(self.diagramid, self.attributes)
       _data.updateSequence(self.diagramid)
@@ -143,7 +143,7 @@ class Cluster:
          #else:
          self.parent = None
 
-      self.attributes = {"type": "cluster", "label": label, "sublabel": sublabel, "shape": shape, "pencolor": pencolor, "bgcolor": bgcolor, "badgetext": badgetext, "badgeshape": badgeshape, "badgepencolor": badgepencolor, "badgebgcolor": badgebgcolor, "icon": icon, "hideicon": hideicon, "direction": direction, "many": many, "alternate": alternate, "provider": provider, "fontname": fontname, "fontsize": fontsize, "parentid": self.parentid}
+      self.attributes = _data.getClusterAttributes(label=label, sublabel=sublabel, shape=shape, pencolor=pencolor, bgcolor=bgcolor, badgetext=badgetext, badgeshape=badgeshape, badgepencolor=badgepencolor, badgebgcolor=badgebgcolor, icon=icon, hideicon=hideicon, direction=direction, many=many, alternate=alternate, provider=provider, fontname=fontname, fontsize=fontsize, parentid=self.parentid)
       _data.updateSequence(self.shapeid)
 
       return
@@ -235,7 +235,7 @@ class Node:
       self.parentid = self.parent.shapeid
       setCluster(self.parent)
 
-      self.attributes = {"type": "node", "label": label, "sublabel": sublabel, "shape": shape, "pencolor": pencolor, "bgcolor": bgcolor, "badgetext": badgetext, "badgeshape": badgeshape, "badgepencolor": badgepencolor, "badgebgcolor": badgebgcolor, "icon": icon, "hideicon": hideicon, "direction": direction, "many": many, "provider": provider, "fontname": fontname, "fontsize": fontsize, "parentid": self.parentid}
+      self.attributes = _data.getNodeAttributes(label=label, sublabel=sublabel, shape=shape, pencolor=pencolor, bgcolor=bgcolor, badgetext=badgetext, badgeshape=badgeshape, badgepencolor=badgepencolor, badgebgcolor=badgebgcolor, icon=icon, hideicon=hideicon, direction=direction, many=many, provider=provider, fontname=fontname, fontsize=fontsize, parentid=self.parentid)
 
       #_nodes[self.shapeid] = self.attributes
       _data.addNode(self.shapeid, self.attributes)
@@ -330,7 +330,7 @@ class Edge:
       self.startfill = startfill
       self.endfill = endfill
 
-      self.attributes = {"type": "edge", "label": label, "sourceid": sourceid, "targetid": targetid, "color": color, "style": style, "startarrow": startarrow, "endarrow": endarrow, "startfill": startfill, "endfill": endfill, "fontname": fontname, "fontsize": fontsize}
+      self.attributes = _data.getEdgeAttributes(label=label, sourceid=sourceid, targetid=targetid, color=color, style=style, startarrow=startarrow, endarrow=endarrow, startfill=startfill, endfill=endfill, fontname=fontname, fontsize=fontsize)
 
       _data.addEdge(self.shapeid, self.attributes)
       _data.updateSequence(self.shapeid)

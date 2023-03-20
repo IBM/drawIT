@@ -221,6 +221,43 @@ class Attributes:
       "fontname": fontname,
       "fontsize": fontsize}
 
+   def getSingleArrowAttributes(self,
+      label = "",
+      sourceid = "",
+      targetid = "",
+      color = "",
+      fontname = "",
+      fontsize = 0):
+    return self.getEdgeAttributes(
+      label = label,
+      sourceid = sourceid,
+      targetid = targetid,
+      color = color,
+      endarrow = "Classic",
+      endfill = True,
+      fontname = fontname,
+      fontsize = fontsize)
+
+   def getDoubleArrowAttributes(self,
+      label = "",
+      sourceid = "",
+      targetid = "",
+      color = "",
+      fontname = "",
+      fontsize = 0):
+    return self.getEdgeAttributes(
+      label = label,
+      sourceid = sourceid,
+      targetid = targetid,
+      color = color,
+      startarrow = "Classic",
+      endarrow = "Classic",
+      startfill = True,
+      endfill = True,
+      fontname = fontname,
+      fontsize = fontsize)
+
+# Valid attribute values.
 # Valid attribute values.
 
 class Directions(Enum):

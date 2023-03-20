@@ -195,7 +195,7 @@ class Compose:
       nodes[self.common.compress(internetid)] = attributes
       self.attributes.updateSequence(self.common.compress(internetid))
 
-      attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(userid), targetid=self.common.compress(internetid), startarrow='classic', endarrow='classic', startfill=True, endfill=True)
+      attributes = self.attributes.getDoubleArrowAttributes(sourceid=self.common.compress(userid), targetid=self.common.compress(internetid))
 
       internetedgeid = randomid()
       edges[self.common.compress(internetedgeid)] = attributes
@@ -288,16 +288,14 @@ class Compose:
                nodes[self.common.compress(subnetpubgateid)] = attributes
                self.attributes.updateSequence(self.common.compress(subnetpubgateid))
 
-               # TODO Make single arrow.
-               attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(subnetid), targetid=self.common.compress(subnetpubgateid), endarrow='classic', endfill=True)
+               attributes = self.attributes.getSingleArrowAttributes(sourceid=self.common.compress(subnetid), targetid=self.common.compress(subnetpubgateid))
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
                self.attributes.updateSequence(self.common.compress(edgeid))
 
-               # TODO Make single arrow.
                #routername = vpcname + '-router'
-               attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(subnetpubgateid), targetid=self.common.compress(internetid), endarrow='classic', endfill=True)
+               attributes = self.attributes.getSingleArrowAttributes(sourceid=self.common.compress(subnetpubgateid), targetid=self.common.compress(internetid))
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -307,8 +305,7 @@ class Compose:
                self.common.printInvalidPublicGateway(subnetpubgateid)
 
             else:
-               # TODO Make single arrow.
-               attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(subnetid), targetid=self.common.compress(subnetpubgateid), endarrow='classic', endfill=True)
+               attributes = self.attributes.getSingleArrowAttributes(sourceid=self.common.compress(subnetid), targetid=self.common.compress(subnetpubgateid))
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -414,7 +411,7 @@ class Compose:
                #fiplink = self.shapes.buildDoubleArrow(iplabel, instanceid, routername, None)
                #links.append(fiplink)
 
-               attributes = self.attributes.getEdgeAttributes(label=iplabel, sourceid=self.common.compress(instanceid), targetid=self.common.compress(internetid), startarrow="classic", startfill=True, endarrow='classic', endfill=True)
+               attributes = self.attributes.getDoubleArrowAttributes(label=iplabel, sourceid=self.common.compress(instanceid), targetid=self.common.compress(internetid))
 
                fipedgeid = randomid()
                edges[self.common.compress(fipedgeid)] = attributes
@@ -528,7 +525,7 @@ class Compose:
                               self.attributes.updateSequence(self.common.compress(lbid))
 
                               #routername = vpcname + '-router'
-                              attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(lbid), targetid=self.common.compress(internetid), startarrow="classic", startfill=True, endarrow='classic', endfill=True)
+                              attributes = self.attributes.getDoubleArrowAttributes(sourceid=self.common.compress(lbid), targetid=self.common.compress(internetid))
 
                               edgeid = randomid()
                               edges[self.common.compress(edgeid)] = attributes
@@ -536,7 +533,7 @@ class Compose:
 
                            # label, source, target
                            #instancelink = self.shapes.buildDoubleArrow('', nicid, lbid, None)
-                           attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(instanceid), targetid=self.common.compress(lbid), startarrow="classic", startfill=True, endarrow='classic', endfill=True)
+                           attributes = self.attributes.getDoubleArrowAttributes(sourceid=self.common.compress(instanceid), targetid=self.common.compress(lbid))
 
                            edgeid = randomid()
                            edges[self.common.compress(edgeid)] = attributes
