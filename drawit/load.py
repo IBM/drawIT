@@ -31,6 +31,7 @@ class Load:
    vpcTable = {}         # Table of zones ordered by vpc that shows zones with each vpc.
    zoneTable = {}        # Table of subnets ordered by vpc+zone that shows subnets within each zone.
    lbTable = {}          # Table of load balancerbs ordered by vpc+lb that shows load balancers within each vpc.
+   aclTable = {}         # Table of network ACLs ordered by vpc that shows network ACLs within each vpc.
 
    data = None
    common = None
@@ -66,9 +67,11 @@ class Load:
          #self.analyzeServiceIcons()
          if self.common.isInputTerraform():
             #self.analyzeTerraformLoadBalancers()
+            #self.analyzeiTerraformNetworkACLs()
             return True
          else:
             self.analyzeLoadBalancers()
+            self.analyzeNetworkACLs()
          return True
 
       return False
@@ -514,6 +517,24 @@ class Load:
 
       return
 
+   def analyzeNetworkACLs(self):
+      acldata = self.data.getNetworkACLs()
+      if not acldata.empty:
+         for aclindex, acl in acldata.iterrows():
+            aclid = acl['id']
+            vpcid = acl['vpcId']
+
+            #extended = {aclid: {acl}}
+            if vpcid in self.aclTable:
+               #self.aclTable[vpcid].append(extended)
+               self.aclTable[vpcid].append(acl)
+            else:
+              #self.aclTable[vpcid] = [extended]
+              self.aclTable[vpcid] = [acl]
+
+      return
+
+
    def findRow(self, dictionarylist, columnname, columnvalue):
       if len(dictionarylist) > 0:
          for dictionaryindex, dictionary in dictionarylist.iterrows():
@@ -584,6 +605,12 @@ class Load:
 
    def getNetworkACLs(self):
       return self.data.getNetworkACLs()
+
+   def getNetworkACLs(self, vpcid):
+      if vpcid in self.aclTable:
+         return self.aclTable[vpcid]
+      else:
+         return None
 
    def getPublicGateways(self):
       return self.data.getPublicGateways()

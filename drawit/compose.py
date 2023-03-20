@@ -88,6 +88,8 @@ class Compose:
          self.attributes.updateSequence(self.common.compress(vpcid))
          clusters, nodes, edges = self.composeLoadBalancers(vpcname, vpcid, clusters, nodes, edges, internetid)
 
+         #clusters, nodes, edges = self.composeNetworkACLs(vpcname, vpcid, clusters, nodes, edges, internetid)
+
          #routername = vpcname + '-router'
          #self.attributes.updateSequence(self.common.compress(routername))
 
@@ -121,22 +123,22 @@ class Compose:
                zonecidr = self.getZoneCIDR(zonename)
 
             # Zone attributes with parent vpcid
-            attributes = {"type": "cluster", "label": zonename, "sublabel": zonecidr, "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'zone', "hideicon": '', "direction": 'TB', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(vpcid)}
+            attributes = self.attributes.getClusterAttributes(label=zonename, sublabel=zonecidr, icon='zone', direction='TB', parentid=self.common.compress(vpcid))
 
             #zoneid = self.common.compress(regionzonename)
             clusters[zoneid] = attributes
 
          # VPC attributes with parent region:vpcid
          #regionid = "Region" + ":" + vpcid
-         attributes = {"type": "cluster", "label": vpcname, "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'vpc', "hideicon": '', "direction": 'TB', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(regionid)}
+         attributes = self.attributes.getClusterAttributes(label=vpcname, icon='vpc', direction='TB', parentid=self.common.compress(regionid))
          clusters[self.common.compress(vpcid)] = attributes
 
          # Region attributes with parent cloud:vpcid
          #cloudid = "Cloud" + ":" + vpcid
-         attributes = {"type": "cluster", "label": 'Region', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'region', "hideicon": '', "direction": '', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(cloudid)}
+         attributes = self.attributes.getClusterAttributes(label='Region', icon='region', parentid=self.common.compress(cloudid))
          clusters[self.common.compress(regionid)] = attributes
 
-         attributes = {"type": "cluster", "label": 'Cloud', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'cloud', "hideicon": '', "direction": '', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": None}
+         attributes = self.attributes.getClusterAttributes(label='Cloud', icon='cloud', parentid=None)
          clusters[self.common.compress(cloudid)] = attributes
 
          #routername = vpcname + '-router'
@@ -153,7 +155,7 @@ class Compose:
          #publicedgeid = randomid()
          #edges[self.common.compress(publicedgeid)] = attributes
 
-         attributes = {"type": "diagram", "name": vpcname, "filename": '*', "direction": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "outformat": ''}
+         attributes = self.attributes.getDiagramAttributes(name=vpcname, filename='*')
          #diagramid = randomid()
          diagrams[diagramid] = attributes
 
@@ -177,23 +179,23 @@ class Compose:
       return
 
    def composePublic(self, clusters, nodes, edges, publicid, internetid):
-      attributes = {"type": "cluster", "label": 'Public Network', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'publicnetwork', "hideicon": '', "direction": 'TB', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": None}
+      attributes = self.attributes.getClusterAttributes(label='Public Network', icon='publicnetwork', direction='TB', parentid=None)
 
       #publicid = randomid()
       clusters[self.common.compress(publicid)] = attributes
 
-      attributes = {"type": "node", "label": 'User', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'user', "hideicon": '', "direction": '', "many": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(publicid)}
+      attributes = self.attributes.getNodeAttributes(label='User', icon='user', parentid=self.common.compress(publicid))
 
       userid = randomid()
       nodes[self.common.compress(userid)] = attributes
       self.attributes.updateSequence(self.common.compress(userid))
 
-      attributes = {"type": "node", "label": 'Internet', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'internet', "hideicon": '', "direction": '', "many": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(publicid)}
+      attributes = self.attributes.getNodeAttributes(label='Internet', icon='internet', parentid=self.common.compress(publicid))
 
       nodes[self.common.compress(internetid)] = attributes
       self.attributes.updateSequence(self.common.compress(internetid))
 
-      attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(userid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+      attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(userid), targetid=self.common.compress(internetid), startarrow='classic', endarrow='classic', startfill=True, endfill=True)
 
       internetedgeid = randomid()
       edges[self.common.compress(internetedgeid)] = attributes
@@ -202,13 +204,12 @@ class Compose:
       return clusters, nodes, edges
 
    def composeEnterprise(self, clusters, nodes, edges, enterpriseid):
-      attributes = {"label": 'Enterprise Network', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'enterprisenetwork', "hideicon": '', "direction": '', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": None}
+      attributes = self.attributes.getClusterAttributes(label='Enterprise Network', icon='enterprisenetwork', direction='TB', parentid=None)
 
       #enterpriseid = randomid()
       clusters[enterpriseid] = attributes
 
-      attributes = {"type": "cluster", "label": 'User', "sublabel": '', "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'user', "hideicon": '', "direction": '', "many": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(enterpriseid)}
-
+      attributes = self.attributes.getNodeAttributes(label='User', icon='user', parentid=self.common.compress(enterpriseid))
       userid = randomid()
       nodes[userid] = attributes
 
@@ -271,7 +272,7 @@ class Compose:
          if subnetname.lower().find("bastion") != -1:
             bastion = True
 
-         attributes = {"type": "cluster", "label": subnetname, "sublabel": subnetcidr, "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'subnet', "hideicon": '', "direction": '', "many": '', "alternate": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(regionzonename)}
+         attributes = self.attributes.getClusterAttributes(label=subnetname, sublabel=subnetcidr, icon='subnet', direction='TB', parentid=self.common.compress(regionzonename))
 
          #subnetid = self.common.compress(subnetid)
          #self.attributes.updateSequence(self.common.compress(subnetid))
@@ -282,13 +283,13 @@ class Compose:
             if save_subnetpubgateid == None:
                save_subnetpubgateid = subnetpubgateid
 
-               attributes = {"type": "node", "label": pubgatename, "sublabel": pubgatefipip, "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'publicgateway', "hideicon": '', "direction": '', "many": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(regionzonename)}
+               attributes = self.attributes.getNodeAttributes(label=pubgatename, sublabel=pubgatefipip, icon='publicgateway', parentid=self.common.compress(regionzonename))
                #pubgateid = randomid()
                nodes[self.common.compress(subnetpubgateid)] = attributes
                self.attributes.updateSequence(self.common.compress(subnetpubgateid))
 
                # TODO Make single arrow.
-               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetid), "targetid": self.common.compress(subnetpubgateid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+               attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(subnetid), targetid=self.common.compress(subnetpubgateid), endarrow='classic', endfill=True)
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -296,7 +297,7 @@ class Compose:
 
                # TODO Make single arrow.
                #routername = vpcname + '-router'
-               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetpubgateid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+               attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(subnetpubgateid), targetid=self.common.compress(internetid), endarrow='classic', endfill=True)
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -307,7 +308,7 @@ class Compose:
 
             else:
                # TODO Make single arrow.
-               attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(subnetid), "targetid": self.common.compress(subnetpubgateid), "color": '', "style": '', "startarrow": '', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+               attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(subnetid), targetid=self.common.compress(subnetpubgateid), endarrow='classic', endfill=True)
 
                edgeid = randomid()
                edges[self.common.compress(edgeid)] = attributes
@@ -413,7 +414,7 @@ class Compose:
                #fiplink = self.shapes.buildDoubleArrow(iplabel, instanceid, routername, None)
                #links.append(fiplink)
 
-               attributes = {"type": "edge", "label": iplabel, "sourceid": self.common.compress(instanceid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+               attributes = self.attributes.getEdgeAttributes(label=iplabel, sourceid=self.common.compress(instanceid), targetid=self.common.compress(internetid), startarrow="classic", startfill=True, endarrow='classic', endfill=True)
 
                fipedgeid = randomid()
                edges[self.common.compress(fipedgeid)] = attributes
@@ -427,7 +428,7 @@ class Compose:
             secondarytext = ''
             meta = None
 
-         attributes = {"type": "node", "label": iconname, "sublabel": secondarytext, "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": icontype, "hideicon": '', "direction": '', "many": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(subnetid)}
+         attributes = self.attributes.getNodeAttributes(label=iconname, sublabel=secondarytext, icon=icontype, parentid=self.common.compress(subnetid))
 
          iconid = self.common.compress(iconid)
          nodes[iconid] = attributes
@@ -520,14 +521,14 @@ class Compose:
                            if not lbgenerated:
                               lbgenerated = True
                               # TODO Handle spacing for > 1 LBs.
-                              attributes = {"type": "node", "label": lbname, "sublabel": lbiplist, "shape": '', "pencolor": '', "bgcolor": '', "badgetext": '', "badgeshape": '', "badgepencolor": '', "badgebgcolor": '', "icon": 'lb', "hideicon": '', "direction": '', "many": '', "provider": '', "fontname": '', "fontsize": 0, "parentid": self.common.compress(vpcid)}
+                              attributes = self.attributes.getNodeAttributes(label=lbname, sublabel=lbiplist, icon='lb', parentid=self.common.compress(vpcid))
                               lbid = randomid()
                               #lbid = self.common.compress(lbid)
                               nodes[self.common.compress(lbid)] = attributes
                               self.attributes.updateSequence(self.common.compress(lbid))
 
                               #routername = vpcname + '-router'
-                              attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(lbid), "targetid": self.common.compress(internetid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+                              attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(lbid), targetid=self.common.compress(internetid), startarrow="classic", startfill=True, endarrow='classic', endfill=True)
 
                               edgeid = randomid()
                               edges[self.common.compress(edgeid)] = attributes
@@ -535,11 +536,29 @@ class Compose:
 
                            # label, source, target
                            #instancelink = self.shapes.buildDoubleArrow('', nicid, lbid, None)
-                           attributes = {"type": "edge", "label": '', "sourceid": self.common.compress(instanceid), "targetid": self.common.compress(lbid), "color": '', "style": '', "startarrow": 'classic', "endarrow": 'classic', "startfill": True, "endfill": True, "fontname": '', "fontsize": 0}
+                           attributes = self.attributes.getEdgeAttributes(sourceid=self.common.compress(instanceid), targetid=self.common.compress(lbid), startarrow="classic", startfill=True, endarrow='classic', endfill=True)
 
                            edgeid = randomid()
                            edges[self.common.compress(edgeid)] = attributes
                            self.attributes.updateSequence(self.common.compress(edgeid))
+
+      return clusters, nodes, edges
+
+   def composeNetworkACLs(self, vpcname, vpcid, clusters, nodes, edges, internetid):
+      acls = self.data.getNetworkACLs(vpcid)
+      if acls != None:
+          for acl in acls:
+              #for aclid, aclmember in acl.items():
+              print("*********************")
+              print("ACL:")
+              print(acl)
+              print(acl['rules'])
+              print("*********************")
+            #for lbkey in lbpool:
+            #   for lbid, members in lbpool[lbkey].items():
+            #      lb = self.data.getLoadBalancer(lbid)
+            #      lbid = lb['id']
+            #      lbname = lb['name']
 
       return clusters, nodes, edges
 
