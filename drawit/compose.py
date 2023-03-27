@@ -88,7 +88,8 @@ class Compose:
          self.attributes.updateSequence(self.common.compress(vpcid))
          clusters, nodes, edges = self.composeLoadBalancers(vpcname, vpcid, clusters, nodes, edges, internetid)
 
-         #clusters, nodes, edges = self.composeNetworkACLs(vpcname, vpcid, clusters, nodes, edges, internetid)
+         if not self.common.isInputTerraform():
+            clusters, nodes, edges = self.composeNetworkACLs(vpcname, vpcid, clusters, nodes, edges, internetid)
 
          #routername = vpcname + '-router'
          #self.attributes.updateSequence(self.common.compress(routername))
@@ -546,16 +547,16 @@ class Compose:
       if acls != None:
           for acl in acls:
               #for aclid, aclmember in acl.items():
-              print("*********************")
-              print("ACL:")
-              print(acl)
-              print(acl['rules'])
-              print("*********************")
-            #for lbkey in lbpool:
-            #   for lbid, members in lbpool[lbkey].items():
-            #      lb = self.data.getLoadBalancer(lbid)
-            #      lbid = lb['id']
-            #      lbname = lb['name']
+              #print("*********************")
+              #print(acl)
+              #print(acl['rules'])
+              #print("*********************")
+              aclid = acl['id']
+              aclname = acl['name']
+              attributes = self.attributes.getNodeAttributes(label=aclname, icon='acl', parentid=self.common.compress(vpcid))
+
+              nodes[self.common.compress(aclid)] = attributes
+              self.attributes.updateSequence(self.common.compress(aclid))
 
       return clusters, nodes, edges
 

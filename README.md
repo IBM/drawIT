@@ -16,10 +16,14 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
   - Output is diagrams.net xml file.
   - Refer to Code-to-Diagram Guide below.
 2. JSON-to-Diagram:
-  - Input is from JSON/YAML (tool-generated or Terraform) for existing infrastructure.
+  - Input is from tool-generated JSON/YAML for existing infrastructure.
   - Output is diagrams.net xml file.
   - Refer to JSON-to-Diagram Guide below.
-3. RIAS-to-Diagram:
+3. Terraform-to-Diagram:
+  - Input is from Terraform for existing infrastructure.
+  - Output is diagrams.net xml file.
+  - Refer to JSON-to-Diagram Guide below.
+4. RIAS-to-Diagram:
   - Input is from RIAS APIs for existing infrastructure.
   - Output is diagrams.net xml file.
   - Refer to RIAS-to-Diagram Guide below.
@@ -321,6 +325,10 @@ Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 
 <details><summary>Features Supported</summary>
 
+| Feature | JSON | Terraform | RIAS |
+| --- | --- | --- | --- |
+| Cloud | [x] | [x] | [x] | 
+
 - [x] Cloud 
 - [x] Region
 - [x] VPC
@@ -333,8 +341,9 @@ Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 - [x] ALB
 - [x] NLB
 - [x] VPN Gateway
-- [ ] Network ACLs (Target 3/15 for icon and connectors, 5/1 for rules)
-- [ ] Security Groups (Target 4/1 for icon and connectors, 6/1 for rules)
+- [ ] Network ACLs (Target 6/1 for icon and connectors, 7/1 for rules)
+- [ ] Security Groups (Target 8/1 for icon and connectors, 9/1 for rules)
+- [ ] Direct Link (Target 11/1)
 - [ ] Routing Tables
 - [ ] Routing Table Routes
 - [ ] Bare Metal Servers
