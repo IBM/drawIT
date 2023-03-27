@@ -45,7 +45,7 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | Network ACLs | :heavy_check_mark: | 7/1 | | |
 | Security Groups | :heavy_check_mark: | 8/1 | | |
-| Direct Link | | 11/1 | | |
+| Direct Link | :heavy_check_mark: | 11/1 | | |
 | Routing Tables | | | | |
 | Routing Table Routes | | | | |
 | Bare Metal Servers | | | | | 
