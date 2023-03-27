@@ -41,9 +41,9 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 | Floating IP | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Public Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
-| ALB | :heavy_check_mark | :heavy_check_mark: | :heavy_check_mark: | |
-| NLB | :heavy_check_mark | :heavy_check_mark: | :heavy_check_mark: | |
-| Network ACLs | :heavy_check_mark | 7/1 | | |
+| ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
+| NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
+| Network ACLs | :heavy_check_mark: | 7/1 | | |
 | Security Groups | :heavy_check_mark: | 8/1 | | |
 | Direct Link | | 11/1 | | |
 | Routing Tables | | | | |
