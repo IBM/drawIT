@@ -424,7 +424,7 @@ Refer to rungui.sh or runrias.sh in scripts folder.
 
 | Feature | JSON | Terraform | RIAS |
 | --- | --- | --- | --- |
-| Cloud | :light_check_mark: | :light_check_mark: | :light_check_mark: |
+| Cloud | :check_mark: | :check_mark: | :check_mark: |
 
 <details><summary>Features Supported</summary>
 
