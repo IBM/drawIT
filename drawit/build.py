@@ -404,25 +404,28 @@ class Build:
 
          pencolor = attributes["pencolor"]
          if pencolor == "":
-            iconname, pencolor, iconshape, hideicon = self.icons.getIcon(icon)
+            #iconname, pencolor, iconshape, hideicon = self.icons.getIcon(icon)
+            iconname, pencolor = self.icons.getIcon(icon)
 
          shape = attributes["shape"]
          if shape == "":
-            if iconshape == "":
-               clusters[clusterid]["shape"] = CLUSTER_SHAPE_DEFAULT
-            else:
-               '''
-               shapesplit = iconshape.split("-")
-               iconshape = shapesplit[0]
-               if len(shapesplit) == 2 and shapesplit[1] == "hideicon":
-                  iconname = ""
-               '''
-               clusters[clusterid]["shape"] = iconshape
+            clusters[clusterid]["shape"] = CLUSTER_SHAPE_DEFAULT
+            #if iconshape == "":
+            #   clusters[clusterid]["shape"] = CLUSTER_SHAPE_DEFAULT
+            #else:
+            #   '''
+            #   shapesplit = iconshape.split("-")
+            #   iconshape = shapesplit[0]
+            #   if len(shapesplit) == 2 and shapesplit[1] == "hideicon":
+            #      iconname = ""
+            #   '''
+            #   clusters[clusterid]["shape"] = iconshape
          elif not shape.upper() in [parm.value for parm in ClusterShapes]:
             self.common.printInvalidClusterShape(shape)
             return None
 
-         if attributes["hideicon"] == "" and hideicon == True:
+         #if attributes["hideicon"] == "" and hideicon == True:
+         if attributes["hideicon"] == "":
             clusters[clusterid]["icon"] = ""
          else:
             clusters[clusterid]["icon"] = iconname
@@ -494,16 +497,18 @@ class Build:
 
          shape = attributes["shape"]
          if shape == "":
-            if iconshape == "":
-               nodes[nodeid]["shape"] = NODE_SHAPE_DEFAULT
-            else:
-               nodes[nodeid]["shape"] = iconshape
+            nodes[nodeid]["shape"] = NODE_SHAPE_DEFAULT
+            #if iconshape == "":
+            #   nodes[nodeid]["shape"] = NODE_SHAPE_DEFAULT
+            #else:
+            #   nodes[nodeid]["shape"] = iconshape
          else:
             if not shape.upper() in [parm.value for parm in NodeShapes]:
                self.common.printInvalidNodeShape(shape)
                return None
 
-         if attributes["hideicon"] == "" and hideicon == True:
+         #if attributes["hideicon"] == "" and hideicon == True:
+         if attributes["hideicon"] == "":
             nodes[nodeid]["icon"] = ""
          else:
             nodes[nodeid]["icon"] = iconname

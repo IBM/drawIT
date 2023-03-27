@@ -28,11 +28,11 @@ class Icons:
       'meeting': 	        
             {'icon': 'events', 'color': Colors.lines["user"]},
       'authorizationboundary': 	        
-            {'icon': 'flag', 'color': Colors.lines["network"]},
+            {'icon': 'flag', 'color': Colors.lines["network"], 'shape': 'zone'},
       'cloud-ibm': 	        
             {'icon': 'ibm-cloud', 'color': Colors.lines["network"]},
       'user':  	        
-            {'icon': 'user', 'color': Colors.lines["user"]}, 
+            {'icon': 'user', 'color': Colors.lines["user"], 'shape': 'actor'}, 
       'vsi-any': 	        
             {'icon': 'virtual-machine', 'color': Colors.lines["network"]},
       'vpc-any':  	        
@@ -90,7 +90,7 @@ class Icons:
       'script': 	        
             {'icon': 'script', 'color': Colors.lines["network"]},
       'admin': 	        
-            {'icon': 'user--admin', 'color': Colors.lines["user"]}, 
+            {'icon': 'user--admin', 'color': Colors.lines["user"], 'shape': 'actor'}, 
       'cloudfoundry': 	        
             {'icon': 'cloud-foundry--1', 'color': Colors.lines["network"]},
       'cloudsatellite':  	        
@@ -114,7 +114,7 @@ class Icons:
       'lb-ibm': 	        
             {'icon': 'load-balancer--vpc', 'color': Colors.lines["network"]},
       'acl': 	        
-            {'icon': 'subnet-acl-rules', 'color': Colors.lines["security"]},
+            {'icon': 'subnet-acl-rules', 'color': Colors.lines["security"], 'shape': 'zone'},
       'vpn': 	        
             {'icon': 'vpn--connection', 'color': Colors.lines["network"]},
       'enterprisenetwork': 	        
@@ -124,13 +124,13 @@ class Icons:
       'securityservices-ibm': 	        
             {'icon': 'ibm-security--services', 'color': Colors.lines["network"]},
       'resourcegroup': 	        
-            {'icon': 'group--resource', 'color': Colors.lines["security"]},
+            {'icon': 'group--resource', 'color': Colors.lines["security"], 'shape': 'zone'},
       'servicedeskuser': 	        
             {'icon': 'user--service-desk', 'color': Colors.lines["user"]},
       'protecteddocument': 	        
             {'icon': 'document--protected', 'color': Colors.lines["network"]},
       'securitygroup': 	        
-            {'icon': 'group--security', 'color': Colors.lines["security"]},
+            {'icon': 'group--security', 'color': Colors.lines["security"], 'shape': 'zone'},
       'virtualapp': 	        
             {'icon': 'application--virtual', 'color': Colors.lines["network"]},
       'lbpool': 	        
@@ -188,7 +188,7 @@ class Icons:
       'blockstorage-any': 	        
             {'icon': 'block-storage--alt', 'color': Colors.lines["network"]},
       'accessgroup': 	        
-            {'icon': 'group--access', 'color': Colors.lines["security"]},
+            {'icon': 'group--access', 'color': Colors.lines["security"], 'shape': 'zone'},
       'vpnpolicy': 	        
             {'icon': 'vpn--policy', 'color': Colors.lines["network"]},
       'codesigningservice': 	        
@@ -230,7 +230,7 @@ class Icons:
       #'connectedvehicle': 	        
       #       {'icon': 'vehicle--connected', 'color': Colors.lines["network"]},
       'accountgroup': 	        
-          {'icon': 'group--account', 'color': Colors.lines["security"]},
+          {'icon': 'group--account', 'color': Colors.lines["security"], 'shape': 'zone'},
       'image-service': 	        
             {'icon': 'image-service', 'color': Colors.lines["network"]},
       'balancedprofile': 	        
@@ -446,7 +446,7 @@ class Icons:
       'keyprotect-ibm':  	        
             {'icon': 'ibm-cloud--key-protect', 'color': Colors.lines["security"]}, 
       'secretsmanager': 	        
-            {'icon': 'ibm-cloud--secrets-manager', 'color': Colors.lines["security"]},
+            {'icon': 'ibm-cloud--secrets-manager', 'color': Colors.lines["security"], 'shape': 'zone'},
       'artifactrepository': 	        
             {'icon': 'repo--artifact', 'color': Colors.lines["storage"]},
       'sourcecoderepository': 	        
@@ -471,54 +471,53 @@ class Icons:
             icon = self.iconDictionary[shapetype]
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
          elif shapetype + '-any' in selfs.iconDictionary:
             icon = selfs.iconDictionary[shapetype + '-any']
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
          elif shapetype + '-ibm' in self.iconDictionary:
             icon = self.iconDictionary[shapetype + '-ibm']
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
          else:
             icon = self.iconDictionary['undefined']
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
       else: # check prescribed
          if shapetype in self.iconDictionary:
             icon = self.iconDictionary[shapetype]
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
          elif shapetype + '-ibm' in self.iconDictionary:
             icon = self.iconDictionary[shapetype + '-ibm']
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
          elif shapetype + '-any' in self.iconDictionary:
             icon = self.iconDictionary[shapetype + '-any']
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
          else:
             icon = self.iconDictionary['undefined']
             iconname = icon['icon']
             iconcolor = icon['color']
-            #iconshape = icon['shape'] if 'shape' in icon else ""
-            #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
+            iconshape = icon['shape'] if 'shape' in icon else ""
+            hideicon = icon['hideicon'] if 'hideicon' in icon else ""
 
-      #return iconname, iconcolor, iconshape, hideicon
-      return iconname, iconcolor
+      return iconname, iconcolor, iconshape, hideicon
 
    def validIcon(self, iconname):
       if iconname in self.iconDictionary:

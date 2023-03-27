@@ -43,9 +43,9 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
-| Network ACLs | :heavy_check_mark: | 7/1 | | |
-| Security Groups | :heavy_check_mark: | 8/1 | | |
-| Direct Link | :heavy_check_mark: | 11/1 | | |
+| Network ACLs | :heavy_check_mark: | 5/1 | | |
+| Security Groups | :heavy_check_mark: | 6/1 | | |
+| Direct Link | :heavy_check_mark: | 8/1 | | |
 | Routing Tables | | | | |
 | Routing Table Routes | | | | |
 | Bare Metal Servers | | | | | 
