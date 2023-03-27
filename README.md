@@ -325,9 +325,11 @@ Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 
 <details><summary>Features Supported</summary>
 
+<!---
 | Feature | JSON | Terraform | RIAS |
 | --- | --- | --- | --- |
 | Cloud | -[x] | -[x] | -[x] | 
+--->
 
 - [x] Cloud 
 - [x] Region
