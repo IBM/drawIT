@@ -28,6 +28,52 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
   - Output is diagrams.net xml file.
   - Refer to RIAS-to-Diagram Guide below.
 
+<details><summary>Features Supported</summary>
+
+| Feature | JSON | RIAS | Terraform |
+| --- | --- | --- | --- |
+| Cloud | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Region | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPC | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Availability Zone | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Subnet | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VSI | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Floating IP | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Public Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | |
+| ALB | :heavy_check_mark: | :heavy_check_mark: | |
+| NLB | :heavy_check_mark: | :heavy_check_mark: | |
+| Network ACLs | 7/1 | | |
+| Security Groups | 8/1 | | |
+| Direct Link | 11/1 | | |
+| Routing Tables | | | |
+| Routing Table Routes | | | |
+| Bare Metal Servers | | | | 
+| Images | | | |
+| Volumes | | | |
+| VPE Gateways | | | |
+| Storage Devices | | | |
+| Storage Layers | | | |
+| Instance Groups | | | |
+| Placement Groups | | | |
+| Address Prefixes | | | |
+| Distributed NLB | | | |
+| Dedicated Hosts | | | |
+| Dedicated Host Groups | | | |
+| Node Reservations | | | |
+| Export Policies | | | |
+| Export Policy Rules | | | |
+| Flow Log Collectors | | | |
+| Snapshots | | | |
+| Keys | | | |
+| Shares | | | |
+| IKS Clusters | | | |
+| IKS VPC LB | | | |
+| Schematics | | | |
+| Windows | | | |
+
+</details>
+
 --- 
 
 ## Code-to-Diagram Guide
@@ -325,49 +371,6 @@ Font Names:
 Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 </p>
 
-<details><summary>Features Supported</summary>
-
-- [x] Cloud 
-- [x] Region
-- [x] VPC
-- [x] Availability Zone
-- [x] Subnet
-- [x] VSI
-- [x] Floating IP
-- [x] Public Gateway
-- [x] VPN Gateway
-- [x] ALB
-- [x] NLB
-- [x] VPN Gateway
-- [ ] Network ACLs (Target 6/1 for icon and connectors, 7/1 for rules)
-- [ ] Security Groups (Target 8/1 for icon and connectors, 9/1 for rules)
-- [ ] Direct Link (Target 11/1)
-- [ ] Routing Tables
-- [ ] Routing Table Routes
-- [ ] Bare Metal Servers
-- [ ] Images
-- [ ] Volumes
-- [ ] VPE Gateways
-- [ ] Storage Devices
-- [ ] Storage Layers
-- [ ] Instance Groups
-- [ ] Placement Groups
-- [ ] Address Prefixes
-- [ ] Distributed NLB
-- [ ] Dedicated Hosts
-- [ ] Dedicated Host Groups
-- [ ] Node Reservations
-- [ ] Export Policies
-- [ ] Export Policy Rules
-- [ ] Flow Log Collectors
-- [ ] Snapshots
-- [ ] Keys
-- [ ] Shares
-- [ ] IKS Clusters (include VSIs in clusters)
-- [ ] IKS VPC LB
-
-</details>
-
 ---
 
 ## RIAS-to-Diagram Guide
@@ -375,99 +378,6 @@ Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 <p>
 Refer to rungui.sh or runrias.sh in scripts folder.
 </p>
-
-<details><summary>Features Supported</summary>
-
-- [x] Cloud 
-- [x] Region
-- [x] VPC
-- [x] Availability Zone
-- [x] Subnet
-- [x] VSI
-- [x] Floating IP
-- [x] Public Gateway
-- [x] VPN Gateway
-- [x] ALB
-- [x] NLB
-- [x] VPN Gateway
-- [ ] Network ACLs
-- [ ] Security Groups
-- [ ] Routing Tables
-- [ ] Routing Table Routes
-- [ ] Bare Metal Servers
-- [ ] Images
-- [ ] Volumes
-- [ ] VPE Gateways
-- [ ] Storage Devices
-- [ ] Storage Layers
-- [ ] Instance Groups
-- [ ] Placement Groups
-- [ ] Address Prefixes
-- [ ] Distributed NLB
-- [ ] Dedicated Hosts
-- [ ] Dedicated Host Groups
-- [ ] Node Reservations
-- [ ] Export Policies
-- [ ] Export Policy Rules
-- [ ] Flow Log Collectors
-- [ ] Snapshots
-- [ ] Keys
-- [ ] Shares
-- [ ] IKS Clusters (include VSIs in clusters)
-- [ ] IKS VPC LB
-
-</details>
-
----
-
-## Features Supported
-
-| Feature | JSON | Terraform | RIAS |
-| --- | --- | --- | --- |
-| Cloud | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-
-<details><summary>Features Supported</summary>
-
-- [x] Cloud 
-- [x] Region
-- [x] VPC
-- [x] Availability Zone
-- [x] Subnet
-- [x] VSI
-- [x] Floating IP
-- [x] Public Gateway
-- [x] VPN Gateway
-- [x] ALB
-- [x] NLB
-- [x] VPN Gateway
-- [ ] Network ACLs (Target 6/1 for icon and connectors, 7/1 for rules)
-- [ ] Security Groups (Target 8/1 for icon and connectors, 9/1 for rules)
-- [ ] Direct Link (Target 11/1)
-- [ ] Routing Tables
-- [ ] Routing Table Routes
-- [ ] Bare Metal Servers
-- [ ] Images
-- [ ] Volumes
-- [ ] VPE Gateways
-- [ ] Storage Devices
-- [ ] Storage Layers
-- [ ] Instance Groups
-- [ ] Placement Groups
-- [ ] Address Prefixes
-- [ ] Distributed NLB
-- [ ] Dedicated Hosts
-- [ ] Dedicated Host Groups
-- [ ] Node Reservations
-- [ ] Export Policies
-- [ ] Export Policy Rules
-- [ ] Flow Log Collectors
-- [ ] Snapshots
-- [ ] Keys
-- [ ] Shares
-- [ ] IKS Clusters (include VSIs in clusters)
-- [ ] IKS VPC LB
-
-</details>
 
 ---
 
