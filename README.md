@@ -327,7 +327,7 @@ Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 
 | Feature | JSON | Terraform | RIAS |
 | --- | --- | --- | --- |
-| Cloud | [x] | [x] | [x] | 
+| Cloud | -[x] | -[x] | -[x] | 
 
 - [x] Cloud 
 - [x] Region
