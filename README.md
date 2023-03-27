@@ -22,7 +22,7 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 3. Terraform-to-Diagram:
   - Input is from Terraform for existing infrastructure.
   - Output is diagrams.net xml file.
-  - Refer to JSON-to-Diagram Guide below.
+  - Refer to Terraform-to-Diagram Guide below.
 4. RIAS-to-Diagram:
   - Input is from RIAS APIs for existing infrastructure.
   - Output is diagrams.net xml file.
@@ -313,6 +313,8 @@ Font Names:
 [vpc-single-region-consumer-private-link.py](examples/vpc-single-region/vpc-single-region-consumer-private-link.py)
 
 </p>
+</details>
+
 </details>
 
 --- 
