@@ -420,6 +420,57 @@ Refer to rungui.sh or runrias.sh in scripts folder.
 
 ---
 
+## Features Supported
+
+| Feature | JSON | Terraform | RIAS |
+| --- | --- | --- | --- |
+| Cloud | [x] | [x] | [x] |
+
+<details><summary>Features Supported</summary>
+
+- [x] Cloud 
+- [x] Region
+- [x] VPC
+- [x] Availability Zone
+- [x] Subnet
+- [x] VSI
+- [x] Floating IP
+- [x] Public Gateway
+- [x] VPN Gateway
+- [x] ALB
+- [x] NLB
+- [x] VPN Gateway
+- [ ] Network ACLs (Target 6/1 for icon and connectors, 7/1 for rules)
+- [ ] Security Groups (Target 8/1 for icon and connectors, 9/1 for rules)
+- [ ] Direct Link (Target 11/1)
+- [ ] Routing Tables
+- [ ] Routing Table Routes
+- [ ] Bare Metal Servers
+- [ ] Images
+- [ ] Volumes
+- [ ] VPE Gateways
+- [ ] Storage Devices
+- [ ] Storage Layers
+- [ ] Instance Groups
+- [ ] Placement Groups
+- [ ] Address Prefixes
+- [ ] Distributed NLB
+- [ ] Dedicated Hosts
+- [ ] Dedicated Host Groups
+- [ ] Node Reservations
+- [ ] Export Policies
+- [ ] Export Policy Rules
+- [ ] Flow Log Collectors
+- [ ] Snapshots
+- [ ] Keys
+- [ ] Shares
+- [ ] IKS Clusters (include VSIs in clusters)
+- [ ] IKS VPC LB
+
+</details>
+
+---
+
 ## Prereqs
 
 - Python 3.10.5
