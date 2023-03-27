@@ -368,7 +368,7 @@ Font Names:
 ## JSON-to-Diagram Guide
 
 <p>
-Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
+Refer to run.sh and rungui.sh in the scripts folder.
 </p>
 
 ---
@@ -377,6 +377,14 @@ Refer to run.sh, rungui.sh, and runtf.sh in the scripts folder.
 
 <p>
 Refer to rungui.sh or runrias.sh in scripts folder.
+</p>
+
+---
+
+## Terraform-to-Diagram Guide
+
+<p>
+Refer to runtf.sh in the scripts folder.
 </p>
 
 ---
