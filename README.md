@@ -30,47 +30,47 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 
 <details><summary>Features Supported</summary>
 
-| Feature | JSON | RIAS | Terraform |
-| --- | --- | --- | --- |
-| Cloud | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Region | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPC | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Availability Zone | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Subnet | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VSI | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Floating IP | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Public Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | |
-| ALB | :heavy_check_mark: | :heavy_check_mark: | |
-| NLB | :heavy_check_mark: | :heavy_check_mark: | |
-| Network ACLs | 7/1 | | |
-| Security Groups | 8/1 | | |
-| Direct Link | 11/1 | | |
-| Routing Tables | | | |
-| Routing Table Routes | | | |
-| Bare Metal Servers | | | | 
-| Images | | | |
-| Volumes | | | |
-| VPE Gateways | | | |
-| Storage Devices | | | |
-| Storage Layers | | | |
-| Instance Groups | | | |
-| Placement Groups | | | |
-| Address Prefixes | | | |
-| Distributed NLB | | | |
-| Dedicated Hosts | | | |
-| Dedicated Host Groups | | | |
-| Node Reservations | | | |
-| Export Policies | | | |
-| Export Policy Rules | | | |
-| Flow Log Collectors | | | |
-| Snapshots | | | |
-| Keys | | | |
-| Shares | | | |
-| IKS Clusters | | | |
-| IKS VPC LB | | | |
-| Schematics | | | |
-| Windows | | | |
+| Feature | Code | JSON | RIAS | Terraform |
+| --- | --- | --- | --- | --- |
+| Cloud | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Region | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPC | :heavh_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Availability Zone | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Subnet | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VSI | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Floating IP | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Public Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
+| ALB | :heavy_check_mark | :heavy_check_mark: | :heavy_check_mark: | |
+| NLB | :heavy_check_mark | :heavy_check_mark: | :heavy_check_mark: | |
+| Network ACLs | :heavy_check_mark | 7/1 | | |
+| Security Groups | :heavy_check_mark: | 8/1 | | |
+| Direct Link | | 11/1 | | |
+| Routing Tables | | | | |
+| Routing Table Routes | | | | |
+| Bare Metal Servers | | | | | 
+| Images | | | | |
+| Volumes | | | | |
+| VPE Gateways | | | | |
+| Storage Devices | | | | |
+| Storage Layers | | | | |
+| Instance Groups | | | | |
+| Placement Groups | | | | |
+| Address Prefixes | | | | |
+| Distributed NLB | | | | |
+| Dedicated Hosts | | | | |
+| Dedicated Host Groups | | | | |
+| Node Reservations | | | | |
+| Export Policies | | | | |
+| Export Policy Rules | | | | |
+| Flow Log Collectors | | | | |
+| Snapshots | | | | |
+| Keys | | | | |
+| Shares | | | | |
+| IKS Clusters | | | | |
+| IKS VPC LB | | | | |
+| Schematics | | | | |
+| Windows | | | | |
 
 </details>
 
