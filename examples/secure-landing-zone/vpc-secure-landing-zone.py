@@ -51,7 +51,7 @@ with Diagram("vpc-secure-landing-zone"):
           service1 = Node("Activity Tracker Object Storage", icon="objectstorage") 
           service2 = Node("Activity Tracker", icon="activitytracker") 
           service3 = Node("Key Management", icon="keyprotect") 
-          service4 = Node("Transit Gateway", icon="transitgateway") 
+          service4 = Node("Transit Gateway", icon="tg") 
           service5 = Node("Object Storage", icon="objectstorage") 
           service6 = Node("Management VPC Flow Log Collector", icon="flowlogs") 
           service7 = Node("Workload VPC Flow Log Collector", icon="flowlogs") 

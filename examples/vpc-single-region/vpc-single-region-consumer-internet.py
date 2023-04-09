@@ -4,12 +4,12 @@ with Diagram("vpc-single-region-consumer-internet"):
 
   with Cluster("Public Network", icon="publicnetwork", direction="TB"):
     with Cluster("Consumer 1", direction="TB"):
-      user = Node("User", icon="user") 
+      user = Node("User", icon="user", shape="actor") 
       internet = Node("Internet", icon="internet") 
 
     with Cluster("Consumer 2", direction="TB"):
       internet = Node("Internet", icon="internet") 
-      user = Node("User", icon="user") 
+      user = Node("User", icon="user", shape="actor") 
       vpe = Node("VPE", icon="vpe") 
 
   with Cluster("Cloud", icon="cloud"):
@@ -54,10 +54,10 @@ with Diagram("vpc-single-region-consumer-internet"):
             block = Node("Block Storage", icon="blockstorage") 
         vpegw = Node("VPE Gateway", icon="vpe", many=True) 
 
-      dl1 = Node("Direct Link", icon="directlink") 
+      dl1 = Node("Direct Link", icon="dl") 
       vpn1 = Node("VPN Connection", icon="vpn") 
-      tg = Node("Transit Gateway", icon="transitgateway") 
-      dl2 = Node("*Direct Link* (same)", icon="directlink") 
+      tg = Node("Transit Gateway", icon="tg") 
+      dl2 = Node("*Direct Link* (same)", icon="dl") 
       vpn2 = Node("VPN Connection", icon="vpn") 
 
       with Cluster("VPC 2 (Workload)", icon="vpc"):
@@ -67,7 +67,7 @@ with Diagram("vpc-single-region-consumer-internet"):
 
         with Cluster("Zone 1", sublabel="10.40.0.0/18", icon="zone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
-            with Cluster("SG VPC Default & Cluster", icon="securitygroup"):
+            with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.40.10.0/24 - ACL1", icon="subnet"):
                 open1 = Node("Worker", icon="openshift") 
                 open2 = Node("Worker", icon="openshift") 
@@ -82,7 +82,7 @@ with Diagram("vpc-single-region-consumer-internet"):
 
         with Cluster("Zone 2", sublabel="10.50.0.0/18", icon="zone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
-            with Cluster("SG VPC Default & Cluster", icon="securitygroup"):
+            with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.50.10.0/24 - ACL1", icon="subnet"):
                 open1 = Node("Worker", icon="openshift") 
                 open2 = Node("Worker", icon="openshift") 
@@ -99,7 +99,7 @@ with Diagram("vpc-single-region-consumer-internet"):
 
         with Cluster("Zone 3", sublabel="10.60.0.0/18", icon="zone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
-            with Cluster("SG VPC Default & Cluster", icon="securitygroup"):
+            with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.60.10.0/24 - ACL1", icon="subnet"):
                 open1 = Node("Worker", icon="openshift") 
                 open2 = Node("Worker", icon="openshift") 
@@ -133,5 +133,5 @@ with Diagram("vpc-single-region-consumer-internet"):
 
   with Cluster("Enterprise Network", icon="enterprisenetwork", direction="TB"):
     directory = Node("Enterprise User Directory", icon="undefined") 
-    user = Node("Enterprise User", icon="user") 
+    user = Node("Enterprise User", icon="user", shape="actor") 
     app = Node("Enterprise Applications", icon="undefined") 

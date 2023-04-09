@@ -12,11 +12,11 @@ with Diagram("vpc-high-level-edge"):
           with Cluster("10.10.10.0/24 : ACL1", icon="subnet"):
             vpe = Node("VPE", icon="vpe") 
             vpn = Node("VPN Gateway", icon="vpngateway") 
-            vnf = Node("VNF", icon="vnf") 
+            #vnf = Node("VNF", icon="vnf") 
             bastion = Node("Bastion", icon="bastion") 
             storage = Node("Block Storage", icon="blockstorage") 
 
-      dl = Node("Direct Link", icon="directlink") 
+      dl = Node("Direct Link", icon="dl") 
       vpn = Node("VPN Connection", icon="vpn") 
       tg = Node("Transit Gateway", icon="tg") 
 
@@ -25,7 +25,7 @@ with Diagram("vpc-high-level-edge"):
         with Cluster("Zone", icon="zone", direction="TB"):
           with Cluster("10.20.10.0/24 : ACL1", icon="subnet"):
             vpe = Node("VPE", icon="vpe") 
-            with Cluster("Security Group", icon="securitygroup"):
+            with Cluster("Security Group", icon="securitygroup", shape="zone"):
               vsi = Node("VSI", icon="vsi") 
             roks = Node("ROKS", icon="openshift") 
             storage = Node("Block Storage", icon="blockstorage") 
@@ -35,7 +35,7 @@ with Diagram("vpc-high-level-edge"):
         with Cluster("Zone", icon="zone", direction="TB"):
           with Cluster("10.30.10.0/24 : ACL1", icon="subnet"):
             vpe = Node("VPE", icon="vpe") 
-            with Cluster("Security Group", icon="securitygroup"):
+            with Cluster("Security Group", icon="securitygroup", shape="zone"):
               vsi1 = Node("VSI", icon="vsi") 
               vsi2 = Node("VSI", icon="vsi") 
             roks = Node("ROKS", icon="openshift") 
@@ -45,7 +45,7 @@ with Diagram("vpc-high-level-edge"):
         service1 = Node("Logging", icon="objectstorage") 
         service2 = Node("Auditing", icon="activitytracker") 
         service3 = Node("Monitoring", icon="keyprotect") 
-        service4 = Node("Event Streams", icon="transitgateway") 
+        service4 = Node("Event Streams", icon="tg") 
         service5 = Node("App ID", icon="objectstorage") 
         service6 = Node("HCPS", icon="flowlogs") 
         service7 = Node("HP DBaaS", icon="flowlogs") 

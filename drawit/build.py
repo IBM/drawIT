@@ -402,10 +402,11 @@ class Build:
             self.common.printInvalidIcon(icon)
             return None
 
-         pencolor = attributes["pencolor"]
-         if pencolor == "":
+         iconname, pencolor = self.icons.getIcon(icon)
+         userpencolor = attributes["pencolor"]
+         if userpencolor != "":
             #iconname, pencolor, iconshape, hideicon = self.icons.getIcon(icon)
-            iconname, pencolor = self.icons.getIcon(icon)
+            pencolor = userpencolor
 
          shape = attributes["shape"]
          if shape == "":
@@ -425,7 +426,17 @@ class Build:
             return None
 
          #if attributes["hideicon"] == "" and hideicon == True:
+         #if attributes["hideicon"] == "":
+         #   clusters[clusterid]["icon"] = ""
+         #else:
+         #   clusters[clusterid]["icon"] = iconname
+
          if attributes["hideicon"] == "":
+            hideicon = False
+         else:
+            hideicon = attributes["hideicon"]
+
+         if hideicon == True:
             clusters[clusterid]["icon"] = ""
          else:
             clusters[clusterid]["icon"] = iconname
@@ -491,9 +502,12 @@ class Build:
             self.common.printInvalidIcon(icon)
             return None
 
-         pencolor = attributes["pencolor"]
-         if pencolor == "":
-            iconname, pencolor, iconshape, hideicon  = self.icons.getIcon(icon)
+         iconname, pencolor = self.icons.getIcon(icon)
+         userpencolor = attributes["pencolor"]
+         if userpencolor != "":
+            #iconname, pencolor, iconshape, hideicon  = self.icons.getIcon(icon)
+            #iconname, pencolor = self.icons.getIcon(icon)
+            pencolor = userpencolor
 
          shape = attributes["shape"]
          if shape == "":
@@ -508,7 +522,17 @@ class Build:
                return None
 
          #if attributes["hideicon"] == "" and hideicon == True:
+         #if attributes["hideicon"] == "":
+         #   nodes[nodeid]["icon"] = ""
+         #else:
+         #   nodes[nodeid]["icon"] = iconname
+
          if attributes["hideicon"] == "":
+            hideicon = False
+         else:
+            hideicon = attributes["hideicon"]
+
+         if hideicon == True:
             nodes[nodeid]["icon"] = ""
          else:
             nodes[nodeid]["icon"] = iconname

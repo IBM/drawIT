@@ -119,7 +119,7 @@ class Icons:
             {'icon': 'vpn--connection', 'color': Colors.lines["network"]},
       'enterprisenetwork': 	        
             {'icon': 'network--enterprise', 'color': Colors.lines["network"]},
-      'directlink': 	        
+      'dl': 	        
             {'icon': 'direct-link', 'color': Colors.lines["network"]},
       'securityservices-ibm': 	        
             {'icon': 'ibm-security--services', 'color': Colors.lines["network"]},
@@ -407,7 +407,7 @@ class Icons:
       #      {'icon': 'volume--file--storage', 'color': Colors.lines["storage"]},
       #'objectstoragevolume': 	        
       #      {'icon': 'volume--object-storage', 'color': Colors.lines["storage"]},
-      'transitgateway-ibm': 	        
+      'tg-ibm': 	        
             {'icon': 'ibm-cloud--transit-gateway', 'color': Colors.lines["network"]},
       'enterprise': 	        
             {'icon': 'enterprise', 'color': Colors.lines["network"]},
@@ -465,22 +465,22 @@ class Icons:
    def getIconDictionary(self):
       return self.iconDictionary
 
-   def getIcon(self, shapetype):
+   def getIcon(self, iconusage):
       if self.common.isProviderAny():
-         if shapetype in self.iconDictionary:
-            icon = self.iconDictionary[shapetype]
+         if iconusage in self.iconDictionary:
+            icon = self.iconDictionary[iconusage]
             iconname = icon['icon']
             iconcolor = icon['color']
             #iconshape = icon['shape'] if 'shape' in icon else ""
             #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
-         elif shapetype + '-any' in selfs.iconDictionary:
-            icon = selfs.iconDictionary[shapetype + '-any']
+         elif iconusage + '-any' in selfs.iconDictionary:
+            icon = selfs.iconDictionary[iconusage + '-any']
             iconname = icon['icon']
             iconcolor = icon['color']
             #iconshape = icon['shape'] if 'shape' in icon else ""
             #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
-         elif shapetype + '-ibm' in self.iconDictionary:
-            icon = self.iconDictionary[shapetype + '-ibm']
+         elif iconusage + '-ibm' in self.iconDictionary:
+            icon = self.iconDictionary[iconusage + '-ibm']
             iconname = icon['icon']
             iconcolor = icon['color']
             #iconshape = icon['shape'] if 'shape' in icon else ""
@@ -492,20 +492,20 @@ class Icons:
             #iconshape = icon['shape'] if 'shape' in icon else ""
             #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
       else: # check prescribed
-         if shapetype in self.iconDictionary:
-            icon = self.iconDictionary[shapetype]
+         if iconusage in self.iconDictionary:
+            icon = self.iconDictionary[iconusage]
             iconname = icon['icon']
             iconcolor = icon['color']
             #iconshape = icon['shape'] if 'shape' in icon else ""
             #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
-         elif shapetype + '-ibm' in self.iconDictionary:
-            icon = self.iconDictionary[shapetype + '-ibm']
+         elif iconusage + '-ibm' in self.iconDictionary:
+            icon = self.iconDictionary[iconusage + '-ibm']
             iconname = icon['icon']
             iconcolor = icon['color']
             #iconshape = icon['shape'] if 'shape' in icon else ""
             #hideicon = icon['hideicon'] if 'hideicon' in icon else ""
-         elif shapetype + '-any' in self.iconDictionary:
-            icon = self.iconDictionary[shapetype + '-any']
+         elif iconusage + '-any' in self.iconDictionary:
+            icon = self.iconDictionary[iconusage + '-any']
             iconname = icon['icon']
             iconcolor = icon['color']
             #iconshape = icon['shape'] if 'shape' in icon else ""
