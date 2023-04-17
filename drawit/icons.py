@@ -33,7 +33,7 @@ class Icons:
             {'icon': 'ibm-cloud', 'color': Colors.lines["network"]},
       'user':  	        
             {'icon': 'user', 'color': Colors.lines["user"]}, 
-      'vsi-any': 	        
+      'virtualserver-any': 	        
             {'icon': 'virtual-machine', 'color': Colors.lines["network"]},
       'vpc-any':  	        
             {'icon': 'virtual-private-cloud', 'color': Colors.lines["network"]}, 
@@ -107,11 +107,11 @@ class Icons:
             {'icon': 'switch-layer-3', 'color': Colors.lines["network"]},
       'vpngateway': 	        
             {'icon': 'gateway--vpn', 'color': Colors.lines["network"]},
-      'bm': 	        
+      'baremetal': 	        
             {'icon': 'bare-metal-server', 'color': Colors.lines["compute"]},
       'switchlayer2': 	        
             {'icon': 'switch-layer-2', 'color': Colors.lines["network"]},
-      'lb-ibm': 	        
+      'loadbalancer-ibm': 	        
             {'icon': 'load-balancer--vpc', 'color': Colors.lines["network"]},
       'acl': 	        
             {'icon': 'subnet-acl-rules', 'color': Colors.lines["security"]},
@@ -119,7 +119,7 @@ class Icons:
             {'icon': 'vpn--connection', 'color': Colors.lines["network"]},
       'enterprisenetwork': 	        
             {'icon': 'network--enterprise', 'color': Colors.lines["network"]},
-      'dl': 	        
+      'directlink': 	        
             {'icon': 'direct-link', 'color': Colors.lines["network"]},
       'securityservices-ibm': 	        
             {'icon': 'ibm-security--services', 'color': Colors.lines["network"]},
@@ -133,7 +133,7 @@ class Icons:
             {'icon': 'group--security', 'color': Colors.lines["security"]},
       'virtualapp': 	        
             {'icon': 'application--virtual', 'color': Colors.lines["network"]},
-      'lbpool': 	        
+      'loadbalancerpool': 	        
             {'icon': 'load-balancer--pool', 'color': Colors.lines["network"]},
       #'vehicleservices': 	        
       #      {'icon': 'vehicle--services', 'color': Colors.lines["network"]},
@@ -161,7 +161,7 @@ class Icons:
             {'icon': 'flow-logs-vpc', 'color': Colors.lines["management"]},
       'servicemanagement': 	        
             {'icon': 'cloud--service-management', 'color': Colors.lines["management"]},
-      'nlb': 	        
+      'networkloadbalancer': 	        
             {'icon': 'load-balancer--network', 'color': Colors.lines["network"]},
       'publicnetwork': 	        
             {'icon': 'network--public', 'color': Colors.lines["network"]},
@@ -171,9 +171,9 @@ class Icons:
       #      {'icon': 'vehicle--api', 'color': Colors.lines["network"]},
       #'classicinfrastructure': 	        
       #      {'icon': 'infrastructure--classic', 'color': Colors.lines["network"]},
-      #'classicvsi': 	        
+      #'classicvirtualserver': 	        
       #      {'icon': 'instance--classic', 'color': Colors.lines["network"]},
-      'alb': 	        
+      'apploadbalancer': 	        
             {'icon': 'load-balancer--application', 'color': Colors.lines["network"]},
       'dedicatedhost-ibm': 	        
             {'icon': 'ibm-cloud--dedicated-host', 'color': Colors.lines["network"]},
@@ -181,7 +181,7 @@ class Icons:
             {'icon': 'ibm-cloud--internet-services', 'color': Colors.lines["network"]},
       #'pushtotalkradio': 	        
       #      {'icon': 'radio--push-to-talk', 'color': Colors.lines["network"]},
-      'glb': 	        
+      'globalloadbalancer': 	        
             {'icon': 'load-balancer--global', 'color': Colors.lines["network"]},
       #'classicfirewall': 	        
       #      {'icon': 'firewall--classic', 'color': Colors.lines["network"]},
@@ -199,8 +199,8 @@ class Icons:
             {'icon': 'hybrid-networking--alt', 'color': Colors.lines["network"]},
       'unprotecteddocument': 	        
             {'icon': 'document--unprotected', 'color': Colors.lines["network"]},
-      'bastion': 	        
-            {'icon': 'bastion-host', 'color': Colors.lines["network"]},
+      'bastionhost': 	        
+            {'icon': 'bastion-host', 'color': Colors.lines["security"]},
       'blob': 	        
             {'icon': 'data-blob', 'color': Colors.lines["network"]},
       'objectstorage-any': 	        
@@ -217,7 +217,7 @@ class Icons:
       #      {'icon': 'router--wifi', 'color': Colors.lines["network"]},
       'intrusionprevention': 	        
             {'icon': 'intrusion-prevention', 'color': Colors.lines["network"]},
-      'edge-node--alt': 	        
+      'edgenode': 	        
             {'icon': 'edge-node--alt', 'color': Colors.lines["network"]},
       'vlan-ibm': 	        
             {'icon': 'vlan--ibm', 'color': Colors.lines["network"]},
@@ -231,7 +231,7 @@ class Icons:
       #       {'icon': 'vehicle--connected', 'color': Colors.lines["network"]},
       'accountgroup': 	        
           {'icon': 'group--account', 'color': Colors.lines["security"]},
-      'image-service': 	        
+      'imageservice': 	        
             {'icon': 'image-service', 'color': Colors.lines["network"]},
       'balancedprofile': 	        
             {'icon': 'instance--bx', 'color': Colors.lines["network"]},
@@ -245,7 +245,7 @@ class Icons:
             {'icon': 'application--web', 'color': Colors.lines["network"]},
       'instancegroup': 	        
             {'icon': 'autoscaling', 'color': Colors.lines["network"]},
-      'lblistener': 	        
+      'loadbalancerlistener': 	        
             {'icon': 'load-balancer--listener', 'color': Colors.lines["network"]},
       #'combatradio': 	        
       #      {'icon': 'radio--combat', 'color': Colors.lines["network"]},
@@ -253,7 +253,7 @@ class Icons:
             {'icon': 'user--settings', 'color': Colors.lines["network"]},
       #'wifi-bridge--alt': 	        
       #      {'icon': 'wifi-bridge--alt', 'color': Colors.lines["network"]},
-      'pop': 	        
+      'pointofpresence': 	        
             {'icon': 'point-of-presence', 'color': Colors.lines["network"]},
       'datacenter': 	        
             {'icon': 'data--center', 'color': Colors.lines["network"]},
@@ -265,7 +265,7 @@ class Icons:
             {'icon': 'ibm-cloud--vpc-endpoints', 'color': Colors.lines["network"]},
       'idmanagement': 	        
             {'icon': 'id-management', 'color': Colors.lines["network"]},
-      'vsi-ibm': 	        
+      'virtualserver-ibm': 	        
             {'icon': 'instance--virtual', 'color': Colors.lines["compute"]},
       'managementgui': 	        
             {'icon': 'gui--management', 'color': Colors.lines["network"]},
@@ -307,13 +307,13 @@ class Icons:
       #      {'icon': 'vehicle--insights', 'color': Colors.lines["network"]},
       'activitytracker': 	        
             {'icon': 'cloud--auditing', 'color': Colors.lines["management"]},
-      'hsm': 	        
+      'hardwaresecuritymodule': 	        
             {'icon': 'hardware-security-module', 'color': Colors.lines["network"]},
       '2fa': 	        
             {'icon': 'two-factor-authentication', 'color': Colors.lines["network"]},
       #'wifibridge': 	        
       #      {'icon': 'wifi-bridge', 'color': Colors.lines["network"]},
-      'lb-any': 	        
+      'loadbalancer-any': 	        
             {'icon': 'load-balancer--classic', 'color': Colors.lines["network"]},
       #'locallb': 	        
       #      {'icon': 'load-balancer--local', 'color': Colors.lines["network"]},
@@ -399,17 +399,17 @@ class Icons:
       #      {'icon': 'pcn--z-node', 'color': Colors.lines["network"]},
       'sessionbordercontrol': 	        
             {'icon': 'session-border-control', 'color': Colors.lines["network"]},
-      'tank': 	        
-            {'icon': 'tank', 'color': Colors.lines["network"]},
+      #'tank': 	        
+      #      {'icon': 'tank', 'color': Colors.lines["network"]},
       #'blockstoragevolume': 	        
       #      {'icon': 'volume--block-storage', 'color': Colors.lines["storage"]},
       #'filestoragevolume': 	        
       #      {'icon': 'volume--file--storage', 'color': Colors.lines["storage"]},
       #'objectstoragevolume': 	        
       #      {'icon': 'volume--object-storage', 'color': Colors.lines["storage"]},
-      'tg-ibm': 	        
+      'transitgateway-ibm': 	        
             {'icon': 'ibm-cloud--transit-gateway', 'color': Colors.lines["network"]},
-      'enterprise': 	        
+      'enterprisenetwork': 	        
             {'icon': 'enterprise', 'color': Colors.lines["network"]},
       'linux-ibm':  	        
             {'icon': 'linux', 'color': Colors.lines["network"]}, 
@@ -417,8 +417,8 @@ class Icons:
             {'icon': 'linux--alt', 'color': Colors.lines["network"]}, 
       #'objectstorageslicestor': 	        
       #      {'icon': 'slicestor', 'color': Colors.lines["network"]},
-      'concept': 	        
-            {'icon': 'concept', 'color': Colors.lines["network"]},
+      #'concept': 	        
+      #      {'icon': 'concept', 'color': Colors.lines["network"]},
       #'datadeploymentunitdata': 	        
       #      {'icon': 'deployment-unit--data', 'color': Colors.lines["network"]},
       #'executiondeploymentunit': 	        
@@ -439,9 +439,9 @@ class Icons:
             {'icon': 'api', 'color': Colors.lines["applications"]},
       'buildtool':  	        
             {'icon': 'build-tool', 'color': Colors.lines["applications"]}, 
-      'cd':  	        
+      'continuousdeployment':  	        
             {'icon': 'continuous-deployment', 'color': Colors.lines["management"]}, 
-      'ci': 	        
+      'continuousintegration': 	        
             {'icon': 'continuous-integration', 'color': Colors.lines["management"]},
       'keyprotect-ibm':  	        
             {'icon': 'ibm-cloud--key-protect', 'color': Colors.lines["security"]}, 

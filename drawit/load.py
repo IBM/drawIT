@@ -66,7 +66,7 @@ class Load:
          self.analyzeSubnetIcons()
          #self.analyzeServiceIcons()
          if self.common.isInputTerraform():
-            #self.analyzeTerraformLoadBalancers()
+            self.analyzeTerraformLoadBalancers()
             #self.analyzeiTerraformNetworkACLs()
             return True
          else:
@@ -549,6 +549,13 @@ class Load:
                return dictionary
       return {}
 
+   def findRow3(self, dictionarylist, columnname1, columnvalue1):
+      if len(dictionarylist) > 0:
+         for dictionaryindex, dictionary in dictionarylist.iterrows():
+             if dictionary[columnname1] == columnvalue1:
+               return dictionary
+      return {}
+
    def getInstanceTable(self, subnetid):
       return self.instanceTable[subnetid]
 
@@ -652,6 +659,9 @@ class Load:
 
    def getNetworkInterface(self, id1, id2):
       return self.findRow2( self.data.getNetworkInterfaces(), 'primary_ip.address', id1, 'instance.id', id2)
+
+   def getNetworkInterface3(self, id1):
+      return self.findRow3( self.data.getNetworkInterfaces(), 'primary_ip.address', id1)
 
    def getLoadBalancer(self, id):
       return self.findRow(self.data.getLoadBalancers(), 'id', id)

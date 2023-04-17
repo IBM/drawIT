@@ -131,7 +131,7 @@ class Compose:
 
          # VPC attributes with parent region:vpcid
          #regionid = "Region" + ":" + vpcid
-         attributes = self.attributes.getClusterAttributes(label=vpcname, icon='vpc', direction='TB', parentid=self.common.compress(regionid))
+         attributes = self.attributes.getClusterAttributes(label=vpcname, icon='vpc', parentid=self.common.compress(regionid))
          clusters[self.common.compress(vpcid)] = attributes
 
          # Region attributes with parent cloud:vpcid
@@ -330,12 +330,10 @@ class Compose:
             instancename = iconname
             instanceid = iconid
             instanceframe = iconframe
-            icontype = "vsi"  # NEW
+            icontype = "virtualserver"  # NEW
 
-            '''
             if instancename.lower().find("bastion") != -1:
-               icontype += "Bastion"
-            '''
+               icontype = "bastionhost"
 
             nics = self.data.getNICTable(subnetid, instanceid)
 
@@ -493,33 +491,31 @@ class Compose:
                         # TODO Get instance id.
                         target = member['target']
                         address = target['address']
-                     else:
-                        instanceid = member['instanceId']
-                        instance = self.data.getInstance(instanceid)
-                        if len(instance) > 0:
-                           nics = instance['networkInterfaces']
-                           if nics:
-                              for nic in nics:
-                                 address = nic['ip']
+                     elif self.common.isInputTerraform():
+                        instancename = None
+                        memberaddress = member['target_address']
+                        nicdata = self.data.getNetworkInterface3(memberaddress)
+                        instances = self.data.getInstances()
+                        if not instances.empty:
+                           for instanceindex, instanceframe in instances.iterrows():
+                              nics = instanceframe["networkInterfaces"]
+                              for nicframe in nics:
+                                 nicaddress = nicframe["primary_ipv4_address"]
+                                 if memberaddress == nicaddress:
+                                    saveinstanceframe = instanceframe
+                                    instancename = saveinstanceframe["name"]
+                                    break
+                              if instancename != None:
                                  break
-                           else:
-                              return clusters, nodes, edges
-                        else:
-                           return clusters, nodes, edges
-
-                     nicdata = self.data.getNetworkInterface(address, instanceid)
-                     if len(nicdata) != 0:
-                        nicid = nicdata['id']
-                        nicinstanceid = nicdata['instance.id']
-                        instanceframe = self.data.getInstance(nicinstanceid)
-                        instancename = instanceframe['name']
-                        instancevpcid = instanceframe['vpc.id']
+                        instanceframe = saveinstanceframe
+                        instanceid = instanceframe['id']
+                        instancevpcid = instanceframe['vpc']
 
                         if instancevpcid == vpcid:
                            if not lbgenerated:
                               lbgenerated = True
                               # TODO Handle spacing for > 1 LBs.
-                              attributes = self.attributes.getNodeAttributes(label=lbname, sublabel=lbiplist, icon='lb', parentid=self.common.compress(vpcid))
+                              attributes = self.attributes.getNodeAttributes(label=lbname, sublabel=lbiplist, icon='loadbalancer', parentid=self.common.compress(vpcid))
                               lbid = randomid()
                               #lbid = self.common.compress(lbid)
                               nodes[self.common.compress(lbid)] = attributes
@@ -539,6 +535,53 @@ class Compose:
                            edgeid = randomid()
                            edges[self.common.compress(edgeid)] = attributes
                            self.attributes.updateSequence(self.common.compress(edgeid))
+                     else:
+                        instanceid = member['instanceId']
+                        instance = self.data.getInstance(instanceid)
+                        if len(instance) > 0:
+                           nics = instance['networkInterfaces']
+                           if nics:
+                              for nic in nics:
+                                 address = nic['ip']
+                                 break
+                           else:
+                              return clusters, nodes, edges
+                        else:
+                           return clusters, nodes, edges
+
+                     if not self.common.isInputTerraform():
+                        nicdata = self.data.getNetworkInterface(address, instanceid)
+                        if len(nicdata) != 0:
+                           nicid = nicdata['id']
+                           nicinstanceid = nicdata['instance.id']
+                           instanceframe = self.data.getInstance(nicinstanceid)
+                           instancename = instanceframe['name']
+                           instancevpcid = instanceframe['vpc.id']
+
+                           if instancevpcid == vpcid:
+                              if not lbgenerated:
+                                 lbgenerated = True
+                                 # TODO Handle spacing for > 1 LBs.
+                                 attributes = self.attributes.getNodeAttributes(label=lbname, sublabel=lbiplist, icon='loadbalancer', parentid=self.common.compress(vpcid))
+                                 lbid = randomid()
+                                 #lbid = self.common.compress(lbid)
+                                 nodes[self.common.compress(lbid)] = attributes
+                                 self.attributes.updateSequence(self.common.compress(lbid))
+
+                                 #routername = vpcname + '-router'
+                                 attributes = self.attributes.getDoubleArrowAttributes(sourceid=self.common.compress(lbid), targetid=self.common.compress(internetid))
+
+                                 edgeid = randomid()
+                                 edges[self.common.compress(edgeid)] = attributes
+                                 self.attributes.updateSequence(self.common.compress(edgeid))
+
+                              # label, source, target
+                              #instancelink = self.shapes.buildDoubleArrow('', nicid, lbid, None)
+                              attributes = self.attributes.getDoubleArrowAttributes(sourceid=self.common.compress(instanceid), targetid=self.common.compress(lbid))
+
+                              edgeid = randomid()
+                              edges[self.common.compress(edgeid)] = attributes
+                              self.attributes.updateSequence(self.common.compress(edgeid))
 
       return clusters, nodes, edges
 

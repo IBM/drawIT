@@ -170,7 +170,6 @@ class Types:
       else:
          style += "fillColor=none;" 
 
-
       multiplicity = node["many"]
       if multiplicity:
          style += "ibmMultiplicity=1;"

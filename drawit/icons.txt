@@ -14,7 +14,7 @@ balancedprofile
 baremetalserver 	        
 baremetalserver1 	        
 baremetalserver2  	        
-bastion 	        
+bastionhost      
 blob 	        
 blockstorage, filestorage, objectstorage
 buildtool  	        
@@ -75,7 +75,7 @@ internetservices
 intrusionprevention 	        
 keyprotect  	        
 laptop  	        
-lb, alb, nlb, glb, lblistener, lbpool  	        
+loadbalancer, applicationloadbalancer, networkloadbalancer, globalloadbalancer, loadbalancerlistener, loadbalancerpool  	        
 linux  	        
 linux  	        
 ltetransmission 	        
@@ -152,5 +152,5 @@ voicerouter
 vpc  	        
 vpe 	        
 vpn, vpngateway, vpnpolicy 	        
-vsi 	        
+virtualserver
 watsonaiopspak  	        

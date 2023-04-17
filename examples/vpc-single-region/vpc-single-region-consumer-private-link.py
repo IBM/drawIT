@@ -8,11 +8,11 @@ with Diagram("vpc-single-region-consumer-private-link"):
       internet = Node("Intranet", icon="internet") 
 
   with Cluster("Cloud", icon="cloud"):
-    glb = Node("Global Load Balancer", icon="glb") 
+    glb = Node("Global Load Balancer", icon="globalloadbalancer") 
 
     with Cluster("Region A", icon="region", direction="TB"):
       with Cluster("VPC 1 (Management)", icon="vpc"):
-        lb = Node("Private Load Balancer", icon="lb") 
+        lb = Node("Private Load Balancer", icon="loadbalancer") 
         with Cluster("Zone 1", sublabel="10.10.0.0/18", icon="zone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
@@ -36,8 +36,8 @@ with Diagram("vpc-single-region-consumer-private-link"):
             vpe1 = Node("VPE", icon="vpe") 
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("Subnet 3", sublabel="10.20.30.0/24 - ACL3", icon="subnet"):
-            bastion = Node("Bastion", icon="bastion") 
-            vsi = Node("Virtual Server", icon="vsi") 
+            bastion = Node("Bastion", icon="bastionhost") 
+            vsi = Node("Virtual Server", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
         with Cluster("Zone 3", sublabel="10.30.0.0/18", icon="zone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
@@ -50,19 +50,19 @@ with Diagram("vpc-single-region-consumer-private-link"):
             vpe1 = Node("VPE", icon="vpe") 
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("Subnet 3", sublabel="10.30.30.0/24 - ACL3", icon="subnet"):
-            bastion = Node("Bastion", icon="bastion") 
-            vsi = Node("Virtual Server", icon="vsi") 
+            bastion = Node("Bastion", icon="bastionhost") 
+            vsi = Node("Virtual Server", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
         vpegw = Node("VPE Gateway", icon="vpe", many=True) 
 
-      dl1 = Node("Direct Link", icon="dl") 
+      dl1 = Node("Direct Link", icon="directlink") 
       vpn1 = Node("VPN Connection", icon="vpn") 
-      tg = Node("Transit Gateway", icon="tg") 
-      dl2 = Node("*Direct Link* (same)", icon="dl") 
+      tg = Node("Transit Gateway", icon="transitgateway") 
+      dl2 = Node("*Direct Link* (same)", icon="directlink") 
       vpn2 = Node("VPN Connection", icon="vpn") 
 
       with Cluster("VPC 2 (Workload)", icon="vpc"):
-        lb = Node("Private Load Balancer", icon="lb") 
+        lb = Node("Private Load Balancer", icon="loadbalancer") 
 
         with Cluster("Zone 1", sublabel="10.40.0.0/18", icon="zone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
@@ -93,8 +93,8 @@ with Diagram("vpc-single-region-consumer-private-link"):
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("SG VPC Default", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 3", sublabel="10.50.30.0/24 - ACL3", icon="subnet"):
-              vsi1 = Node("VSI", icon="vsi") 
-              vsi2 = Node("VSI", icon="vsi") 
+              vsi1 = Node("VSI", icon="virtualserver") 
+              vsi2 = Node("VSI", icon="virtualserver") 
               block = Node("Block Storage", icon="blockstorage") 
 
         with Cluster("Zone 3", sublabel="10.60.0.0/18", icon="zone", direction="TB"):
@@ -111,8 +111,8 @@ with Diagram("vpc-single-region-consumer-private-link"):
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("SG VPC Default", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 3", sublabel="10.60.30.0/24 - ACL3", icon="subnet"):
-              vsi1 = Node("VSI", icon="vsi") 
-              vsi2 = Node("VSI", icon="vsi") 
+              vsi1 = Node("VSI", icon="virtualserver") 
+              vsi2 = Node("VSI", icon="virtualserver") 
               block = Node("Block Storage", icon="blockstorage") 
         vpegw = Node("VPE Gateway", icon="vpe", many=True) 
 

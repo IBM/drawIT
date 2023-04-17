@@ -41,8 +41,8 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 | Floating IP | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Public Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
-| ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
-| NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
+| ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Network ACLs | :heavy_check_mark: | 5/1 | | |
 | Security Groups | :heavy_check_mark: | 6/1 | | |
 | Direct Link | :heavy_check_mark: | 8/1 | | |
@@ -399,7 +399,6 @@ Refer to runtf.sh in the scripts folder.
 
 ## References
 
-- [buildIT](https://github.com/IBM/buildit)
 - [IT Architecture Diagrams](https://github.com/IBM/it-architecture-diagrams)
 - [Code Pattern](https://github.com/IBM/codepattern-multitier-vpc)
 
