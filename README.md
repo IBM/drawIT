@@ -391,20 +391,19 @@ Refer to runtf.sh in the scripts folder.
 
 ## Prereqs
 
-- Install Python (3.11.3+):
--- Install [Python](https://www.python.org/downloads/).
--- After installation the installer will open the install directory.
--- Run Update Shell Profile.command to create .zprofile with Python in PATH.
--- Add alias python="python3" to .zprofile.
-- PIP
-- Install PIP:
--- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
--- python get-pip.py
-- Install libraries:
--- pip install pandas
--- pip install pyyaml
--- pip install requests
--- pip install tabulate
+1. Install Python (3.11.3+):
+- Install [Python](https://www.python.org/downloads/).
+- After installation the installer will open the install directory.
+- Run Update Shell Profile.command to create .zprofile with Python in PATH.
+- Add alias python="python3" to .zprofile.
+2. Install PIP:
+- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+- python get-pip.py
+3. Install libraries:
+- pip install pandas
+- pip install pyyaml
+- pip install requests
+- pip install tabulate
 
 ## References
 
