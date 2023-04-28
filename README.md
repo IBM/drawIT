@@ -391,11 +391,20 @@ Refer to runtf.sh in the scripts folder.
 
 ## Prereqs
 
-- Python 3.10.5
-- pandas 1.4.2
-- PyYAML 6.0
-- requests 2.28.0
-- urllib3 1.26.9
+- Install Python (3.11.3+):
+-- Install [Python](https://www.python.org/downloads/).
+-- After installation the installer will open the install directory.
+-- Run Update Shell Profile.command to create .zprofile with Python in PATH.
+-- Add alias python="python3" to .zprofile.
+- PIP
+- Install PIP:
+-- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+-- python get-pip.py
+- Install libraries:
+-- pip install pandas
+-- pip install pyyaml
+-- pip install requests
+-- pip install tabulate
 
 ## References
 

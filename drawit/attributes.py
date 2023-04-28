@@ -133,6 +133,7 @@ class Attributes:
       provider = "",
       fontname = "IBM Plex Sans",
       fontsize = 14,
+      data = None,
       parentid = None):
     return {
       "type": attrtype,
@@ -153,6 +154,7 @@ class Attributes:
       "provider": provider,
       "fontname": fontname,
       "fontsize": fontsize,
+      "data": data,
       "parentid": parentid}
 
    def getNodeAttributes(self,
@@ -173,6 +175,7 @@ class Attributes:
       provider = "",
       fontname = "",
       fontsize = 0,
+      data = None,
       parentid = None):
     return {
       "type": attrtype,
@@ -192,6 +195,7 @@ class Attributes:
       "provider": provider,
       "fontname": fontname,
       "fontsize": fontsize,
+      "data": data,
       "parentid": parentid}
 
    def getEdgeAttributes(self,

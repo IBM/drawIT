@@ -221,7 +221,7 @@ class Build:
       width = geometry[2]
       height = geometry[3]
 
-      meta = None
+      meta = attributes["data"]
 
       shapenode = self.shapes.buildShape(clusterid, attributes, x, y, width, height, meta)
       nodes.append(shapenode)

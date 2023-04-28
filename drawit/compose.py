@@ -124,14 +124,14 @@ class Compose:
                zonecidr = self.getZoneCIDR(zonename)
 
             # Zone attributes with parent vpcid
-            attributes = self.attributes.getClusterAttributes(label=zonename, sublabel=zonecidr, icon='zone', direction='TB', parentid=self.common.compress(vpcid))
+            attributes = self.attributes.getClusterAttributes(label=zonename, sublabel=zonecidr, icon='zone', parentid=self.common.compress(vpcid))
 
             #zoneid = self.common.compress(regionzonename)
             clusters[zoneid] = attributes
 
          # VPC attributes with parent region:vpcid
          #regionid = "Region" + ":" + vpcid
-         attributes = self.attributes.getClusterAttributes(label=vpcname, icon='vpc', parentid=self.common.compress(regionid))
+         attributes = self.attributes.getClusterAttributes(label=vpcname, icon='vpc', direction='TB', parentid=self.common.compress(regionid))
          clusters[self.common.compress(vpcid)] = attributes
 
          # Region attributes with parent cloud:vpcid
@@ -424,7 +424,8 @@ class Compose:
             secondarytext = ''
             meta = None
 
-         attributes = self.attributes.getNodeAttributes(label=iconname, sublabel=secondarytext, icon=icontype, parentid=self.common.compress(subnetid))
+         #attributes = self.attributes.getClusterAttributes(label=iconname, sublabel=secondarytext, shape="node", icon=icontype, data=meta, parentid=self.common.compress(subnetid))
+         attributes = self.attributes.getNodeAttributes(label=iconname, sublabel=secondarytext, icon=icontype, data=meta, parentid=self.common.compress(subnetid))
 
          iconid = self.common.compress(iconid)
          nodes[iconid] = attributes
@@ -562,7 +563,10 @@ class Compose:
                               if not lbgenerated:
                                  lbgenerated = True
                                  # TODO Handle spacing for > 1 LBs.
-                                 attributes = self.attributes.getNodeAttributes(label=lbname, sublabel=lbiplist, icon='loadbalancer', parentid=self.common.compress(vpcid))
+                                 meta = {}
+                                 meta = meta | {'Type': "public" if lbispublic else "private"}
+                                 meta = meta | {'IPs': lbiplist}
+                                 attributes = self.attributes.getNodeAttributes(label=lbname, sublabel=lbiplist, icon='loadbalancer', data=meta, parentid=self.common.compress(vpcid))
                                  lbid = randomid()
                                  #lbid = self.common.compress(lbid)
                                  nodes[self.common.compress(lbid)] = attributes
@@ -586,17 +590,21 @@ class Compose:
       return clusters, nodes, edges
 
    def composeNetworkACLs(self, vpcname, vpcid, clusters, nodes, edges, internetid):
+      meta = {}
       acls = self.data.getNetworkACLs(vpcid)
       if acls != None:
           for acl in acls:
               #for aclid, aclmember in acl.items():
-              #print("*********************")
               #print(acl)
-              #print(acl['rules'])
-              #print("*********************")
-              aclid = acl['id']
               aclname = acl['name']
-              attributes = self.attributes.getNodeAttributes(label=aclname, icon='acl', parentid=self.common.compress(vpcid))
+              aclid = acl['id']
+              #print(acl['subnetIds'])
+              rules = acl['rules']
+              count = 0
+              for rule in rules:
+                 count = count + 1
+                 meta = meta | {'Rule' + str(count): rule}
+              attributes = self.attributes.getNodeAttributes(label=aclname, icon='acl', data=meta, parentid=self.common.compress(vpcid))
 
               nodes[self.common.compress(aclid)] = attributes
               self.attributes.updateSequence(self.common.compress(aclid))
