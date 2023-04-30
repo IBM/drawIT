@@ -78,19 +78,18 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 
 --- 
 
---- 
-
 ## Installation Guide
 
-1. Install Python (3.11.3+):
+1. Fork or copy drawIT to a local directory.
+2. Install Python (3.11.3+):
 - Install [Python](https://www.python.org/downloads/).
 - After installation the installer will open the install directory.
 - Run Update Shell Profile.command to create .zprofile with Python in PATH.
 - Add alias python="python3" to .zprofile.
-2. Install PIP:
+3. Install PIP:
 - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 - python get-pip.py
-3. Install libraries:
+4. Install libraries:
 - pip install pandas
 - pip install pyyaml
 - pip install requests
