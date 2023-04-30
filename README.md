@@ -80,7 +80,14 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 
 ## Installation Guide
 
-1. Fork or copy drawIT to a local directory.
+<details><summary>drawIT</summary>
+
+- Fork or copy drawIT to a local directory.
+
+</details>
+
+<details><summary>Python</summary>
+
 2. Install Python (3.11.3+):
 - Install [Python](https://www.python.org/downloads/).
 - After installation the installer will open the install directory.
@@ -94,6 +101,8 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 - pip install pyyaml
 - pip install requests
 - pip install tabulate
+
+</details>
 
 --- 
 
@@ -136,7 +145,7 @@ Create or copy example.py to top folder of drawIT and run python example.py.
                 # Single arrow line from cluster2 to node1.
                 node1 << cluster2
 
-</details>
+</details>Y
 
 <details><summary>Parameters</summary>
 
