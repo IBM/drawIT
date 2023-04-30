@@ -74,7 +74,11 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 
 </details>
 
-<details><summary>Installation</summary>
+--- 
+
+--- 
+
+## Installation Guide
 
 1. Install Python (3.11.3+):
 - Install [Python](https://www.python.org/downloads/).
@@ -89,8 +93,6 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 - pip install pyyaml
 - pip install requests
 - pip install tabulate
-
-</details>
 
 --- 
 
