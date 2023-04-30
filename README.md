@@ -74,9 +74,31 @@ The [IBM2 Mac Beta](https://github.com/IBM/it-architecture-diagrams/releases) of
 
 </details>
 
+<details><summary>Installation</summary>
+
+1. Install Python (3.11.3+):
+- Install [Python](https://www.python.org/downloads/).
+- After installation the installer will open the install directory.
+- Run Update Shell Profile.command to create .zprofile with Python in PATH.
+- Add alias python="python3" to .zprofile.
+2. Install PIP:
+- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+- python get-pip.py
+3. Install libraries:
+- pip install pandas
+- pip install pyyaml
+- pip install requests
+- pip install tabulate
+
+</details>
+
 --- 
 
 ## Code-to-Diagram Guide
+
+<p>
+Create or copy example.py to top folder of drawIT and run python example.py.
+</p>
 
 <details><summary>Structure</summary>
 
@@ -388,22 +410,6 @@ Refer to runtf.sh in the scripts folder.
 </p>
 
 ---
-
-## Prereqs
-
-1. Install Python (3.11.3+):
-- Install [Python](https://www.python.org/downloads/).
-- After installation the installer will open the install directory.
-- Run Update Shell Profile.command to create .zprofile with Python in PATH.
-- Add alias python="python3" to .zprofile.
-2. Install PIP:
-- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-- python get-pip.py
-3. Install libraries:
-- pip install pandas
-- pip install pyyaml
-- pip install requests
-- pip install tabulate
 
 ## References
 
