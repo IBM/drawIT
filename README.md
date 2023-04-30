@@ -145,7 +145,7 @@ Create or copy example.py to top folder of drawIT and run python example.py.
                 # Single arrow line from cluster2 to node1.
                 node1 << cluster2
 
-</details>Y
+</details>
 
 <details><summary>Parameters</summary>
 
