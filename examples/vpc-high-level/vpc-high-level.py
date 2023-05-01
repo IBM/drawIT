@@ -8,7 +8,7 @@ with Diagram("vpc-high-level"):
 
       with Cluster("VPC 1 (Management)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone", icon="zone", direction="TB"):
+        with Cluster("Zone", icon="availabilityzone", direction="TB"):
           with Cluster("10.10.10.0/24 : ACL1", icon="subnet"):
             vpc = Node("VPC", icon="vpc") 
             vpn = Node("VPN Gateway", icon="vpngateway") 
@@ -24,7 +24,7 @@ with Diagram("vpc-high-level"):
 
       with Cluster("VPC 2 (Workload)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone", icon="zone", direction="TB"):
+        with Cluster("Zone", icon="availabilityzone", direction="TB"):
           with Cluster("10.20.10.0/24 : ACL1", icon="subnet"):
             vpc = Node("VPC", icon="vpc") 
             vpn = Node("VPN Gateway", icon="vpngateway") 

@@ -13,7 +13,7 @@ with Diagram("vpc-single-region-consumer-intranet"):
     with Cluster("Region A", icon="region", direction="TB"):
       with Cluster("VPC 1 (Management)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone 1", sublabel="10.10.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 1", sublabel="10.10.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.10.10.0/24 - ACL1", icon="subnet"):
@@ -25,7 +25,7 @@ with Diagram("vpc-single-region-consumer-intranet"):
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("Subnet 3", sublabel="10.10.30.0/24 - ACL3", icon="subnet"):
             vpn = Node("VPN Gateway", icon="vpngateway") 
-        with Cluster("Zone 2", sublabel="10.20.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 2", sublabel="10.20.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.20.10.0/24 - ACL1", icon="subnet"):
@@ -39,7 +39,7 @@ with Diagram("vpc-single-region-consumer-intranet"):
             bastion = Node("Bastion", icon="bastionhost") 
             vsi = Node("Virtual Server", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
-        with Cluster("Zone 3", sublabel="10.30.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 3", sublabel="10.30.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.30.10.0/24 - ACL1", icon="subnet"):
@@ -64,7 +64,7 @@ with Diagram("vpc-single-region-consumer-intranet"):
       with Cluster("VPC 2 (Workload)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
 
-        with Cluster("Zone 1", sublabel="10.40.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 1", sublabel="10.40.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.40.10.0/24 - ACL1", icon="subnet"):
@@ -79,7 +79,7 @@ with Diagram("vpc-single-region-consumer-intranet"):
           with Cluster("Subnet 3", sublabel="10.40.30.0/24 - ACL3", icon="subnet"):
             vpn = Node("VPN Gateway", icon="vpngateway") 
 
-        with Cluster("Zone 2", sublabel="10.50.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 2", sublabel="10.50.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.50.10.0/24 - ACL1", icon="subnet"):
@@ -96,7 +96,7 @@ with Diagram("vpc-single-region-consumer-intranet"):
             vsi2 = Node("VSI", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
 
-        with Cluster("Zone 3", sublabel="10.60.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 3", sublabel="10.60.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("Multi-Zone OpenShift Managed Cluster Service", icon="openshift"):
             with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
               with Cluster("Subnet 1", sublabel="10.60.10.0/24 - ACL1", icon="subnet"):

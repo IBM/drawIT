@@ -8,7 +8,7 @@ with Diagram("vpc-high-level-edge"):
 
       with Cluster("VPC 1 (Edge/Transit)", icon="vpc"):
         lb = Node("Public Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone", icon="zone", direction="TB"):
+        with Cluster("Zone", icon="availabilityzone", direction="TB"):
           with Cluster("10.10.10.0/24 : ACL1", icon="subnet"):
             vpe = Node("VPE", icon="vpe") 
             vpn = Node("VPN Gateway", icon="vpngateway") 
@@ -22,7 +22,7 @@ with Diagram("vpc-high-level-edge"):
 
       with Cluster("VPC 2 (Management)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone", icon="zone", direction="TB"):
+        with Cluster("Zone", icon="availabilityzone", direction="TB"):
           with Cluster("10.20.10.0/24 : ACL1", icon="subnet"):
             vpe = Node("VPE", icon="vpe") 
             with Cluster("Security Group", icon="securitygroup", shape="zone"):
@@ -32,7 +32,7 @@ with Diagram("vpc-high-level-edge"):
 
       with Cluster("VPC 3 (Workload)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone", icon="zone", direction="TB"):
+        with Cluster("Zone", icon="availabilityzone", direction="TB"):
           with Cluster("10.30.10.0/24 : ACL1", icon="subnet"):
             vpe = Node("VPE", icon="vpe") 
             with Cluster("Security Group", icon="securitygroup", shape="zone"):

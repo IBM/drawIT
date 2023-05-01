@@ -124,7 +124,7 @@ class Compose:
                zonecidr = self.getZoneCIDR(zonename)
 
             # Zone attributes with parent vpcid
-            attributes = self.attributes.getClusterAttributes(label=zonename, sublabel=zonecidr, icon='zone', parentid=self.common.compress(vpcid))
+            attributes = self.attributes.getClusterAttributes(label=zonename, sublabel=zonecidr, icon='availabilityzone', parentid=self.common.compress(vpcid))
 
             #zoneid = self.common.compress(regionzonename)
             clusters[zoneid] = attributes

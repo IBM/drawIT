@@ -67,11 +67,11 @@ class Icons:
       #      {'icon': 'tablet', 'color': Colors.lines["user"]}, 
       'archive':  	        
             {'icon': 'archive', 'color': Colors.lines["network"]}, 
-      'zone':  	        
+      'availabilityzone':  	        
             {'icon': 'data--base--alt', 'color': Colors.lines["location"]}, 
       'internet':  	        
             {'icon': 'wikis', 'color': Colors.lines["network"]}, 
-      'db':  	        
+      'database':  	        
             {'icon': 'data--base', 'color': Colors.lines["storage"]}, 
       'subnet-any':  	        
             {'icon': 'locked', 'color': Colors.lines["network"]}, 

@@ -13,7 +13,7 @@ with Diagram("vpc-multi-region"):
     with Cluster("Region A", icon="region", direction="TB"):
       with Cluster("VPC 1 (Management)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone 1", sublabel="10.10.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 1", sublabel="10.10.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.10.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -24,7 +24,7 @@ with Diagram("vpc-multi-region"):
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("Subnet 3", sublabel="10.10.30.0/24 - ACL3", icon="subnet"):
             vpn = Node("VPN Gateway", icon="vpngateway") 
-        with Cluster("Zone 2", sublabel="10.20.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 2", sublabel="10.20.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.20.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -37,7 +37,7 @@ with Diagram("vpc-multi-region"):
             bastion = Node("Bastion", icon="bastionhost") 
             vsi = Node("VSI", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
-        with Cluster("Zone 3", sublabel="10.30.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 3", sublabel="10.30.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.30.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -59,7 +59,7 @@ with Diagram("vpc-multi-region"):
       with Cluster("VPC 2 (Workload)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
 
-        with Cluster("Zone 1", sublabel="10.40.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 1", sublabel="10.40.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.40.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -71,7 +71,7 @@ with Diagram("vpc-multi-region"):
           with Cluster("Subnet 3", sublabel="10.40.30.0/24 - ACL3", icon="subnet"):
             vpn = Node("VPN Gateway", icon="vpngateway") 
 
-        with Cluster("Zone 2", sublabel="10.50.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 2", sublabel="10.50.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.50.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -87,7 +87,7 @@ with Diagram("vpc-multi-region"):
             vsi2 = Node("VSI", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
 
-        with Cluster("Zone 3", sublabel="10.60.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 3", sublabel="10.60.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.60.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -123,7 +123,7 @@ with Diagram("vpc-multi-region"):
     with Cluster("Region B", icon="region", direction="TB"):
       with Cluster("VPC 1 (Management / Controls)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
-        with Cluster("Zone 1", sublabel="10.70.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 1", sublabel="10.70.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.70.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -134,7 +134,7 @@ with Diagram("vpc-multi-region"):
             vpe2 = Node("VPE", icon="vpe") 
           with Cluster("Subnet 3", sublabel="10.70.30.0/24 - ACL3", icon="subnet"):
             vpn = Node("VPN Gateway", icon="vpngateway") 
-        with Cluster("Zone 2", sublabel="10.80.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 2", sublabel="10.80.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.80.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -147,7 +147,7 @@ with Diagram("vpc-multi-region"):
             bastion = Node("Bastion", icon="bastionhost") 
             vsi = Node("VSI", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
-        with Cluster("Zone 3", sublabel="10.90.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 3", sublabel="10.90.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.90.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -169,7 +169,7 @@ with Diagram("vpc-multi-region"):
       with Cluster("VPC 2 (Workload)", icon="vpc"):
         lb = Node("Private Load Balancer", icon="loadbalancer") 
 
-        with Cluster("Zone 1", sublabel="10.100.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 1", sublabel="10.100.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.10o.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -179,7 +179,7 @@ with Diagram("vpc-multi-region"):
             vpe1 = Node("VPE", icon="vpe") 
             vpe2 = Node("VPE", icon="vpe") 
 
-        with Cluster("Zone 2", sublabel="10.110.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 2", sublabel="10.110.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.110.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 
@@ -195,7 +195,7 @@ with Diagram("vpc-multi-region"):
             vsi2 = Node("VSI", icon="virtualserver") 
             block = Node("Block Storage", icon="blockstorage") 
 
-        with Cluster("Zone 3", sublabel="10.120.0.0/18", icon="zone", direction="TB"):
+        with Cluster("Zone 3", sublabel="10.120.0.0/18", icon="availabilityzone", direction="TB"):
           with Cluster("SG VPC Default & Cluster", icon="securitygroup", shape="zone"):
             with Cluster("Subnet 1", sublabel="10.120.10.0/24 - ACL1", icon="subnet"):
               vsi1 = Node("VSI", icon="virtualserver") 

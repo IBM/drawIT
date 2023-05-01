@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
    name='drawIT',
-   version='0.10.11',
+   version='0.10.12',
    license='Apache License 2.0',
    python_requires='>=3.10.5',
    install_requires=[
