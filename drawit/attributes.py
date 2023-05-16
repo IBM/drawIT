@@ -278,15 +278,19 @@ class Providers(Enum):
    ANY = 'ANY'  # logical
    IBM = 'IBM'   # prescribed-ibm
 
+# Nodes are collapsed layout.
 class NodeShapes(Enum):
    ACTOR = 'ACTOR'
    COMPONENT = 'COMPONENT'
    NODE = 'NODE'
+   TARGET = 'TARGET'
 
+# Clusters are expanded layout.
 class ClusterShapes(Enum):
    COMPONENT = 'COMPONENT'
    LOCATION = 'LOCATION'
    NODE = 'NODE'
+   TARGET = 'TARGET'
    ZONE = 'ZONE'
 
 class OutFormats(Enum):
