@@ -63,7 +63,9 @@ class Load:
       if self.analyzeData():
          self.analyzeContainers()
          #self.analyzeInstances()
-         self.analyzeSubnetIcons()
+         if not self.common.isInputRIAS():
+            # TODO: Fix Subnet Icons for RIAS.
+            self.analyzeSubnetIcons()
          #self.analyzeServiceIcons()
          if self.common.isInputTerraform():
             self.analyzeTerraformLoadBalancers()

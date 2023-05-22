@@ -46,8 +46,8 @@ class RIAS:
    common = None
 
    def __init__(self, common):
-      #self.types = ['vpcs', 'subnets', 'instances', 'public_gateways', 'floating_ips', 'vpn_gateways', 'endpoint_gateways', 'load_balancers']
-      self.types = ['vpcs', 'subnets', 'instances', 'clusters', 'public_gateways', 'floating_ips']
+      self.types = ['vpcs', 'subnets', 'instances', 'public_gateways', 'floating_ips', 'vpn_gateways', 'endpoint_gateways', 'load_balancers']
+      #self.types = ['vpcs', 'subnets', 'instances', 'clusters', 'public_gateways', 'floating_ips']
       self.common = common
       return
 
@@ -104,6 +104,8 @@ class RIAS:
       }
       request = endpoint + "/v1/" + group
       response = get_request(url=request, headers=headers, params=params, verify=False)
+      print(request)
+      print(response)
       rawdata = json_load(response.text)
       if 'errors' in rawdata:
          errors = rawdata['errors']
@@ -150,7 +152,7 @@ class RIAS:
          'generation': '2'
       }
       request = endpoint + "/v1/" + group
-      request = endpoint + "/v1/" + group + "/" + designatedVPC
+      #request = endpoint + "/v1/" + group + "/" + designatedVPC
       response = get_request(url=request, headers=headers, params=params, verify=False)
       rawdata = json_load(response.text)
       print("rawdata:")
@@ -255,11 +257,12 @@ class RIAS:
       #return data
  
       for datatype in self.types:
-         designatedVPC = self.common.getDesignatedVPC()
-         if designatedVPC == '*':
-            rawdata = self.getriasdata(token, self.common.getAccountID(), datatype)
-         else:
-            rawdata = self.getriasdatavpc(token, self.common.getAccountID(), datatype, designatedVPC)
+         #designatedVPC = self.common.getDesignatedVPC()
+         #if designatedVPC == '*':
+         #   rawdata = self.getriasdata(token, self.common.getAccountID(), datatype)
+         #else:
+         #   rawdata = self.getriasdatavpc(token, self.common.getAccountID(), datatype, designatedVPC)
+         rawdata = self.getriasdata(token, self.common.getAccountID(), datatype)
          self.data[datatype] = rawdata
 
       self.normalizeData()
@@ -319,19 +322,20 @@ class RIAS:
                lbmemberdata.append(members)
 
                for member in members:
-                  target = member['target']
-                  address = target['address']
-                  instance = self.findRow2(self.getInstances(), 'vpc.id', vpcid, 'ip', address)
+                  # TODO Review need for target, address, instance with RIAS.
+                  #target = member['target']
+                  #address = target['address'] if address in target 
+                  #instance = self.findRow2(self.getInstances(), 'vpc.id', vpcid, 'ip', address)
 
                   extended['members'] = members
-                  pooldata.append(extended)
+                  lbpooldata.append(extended)
 
-            memberdict = {'id': id, 'name': lbname, 'listeners': listenerdata, 'pools': pooldata}
-            memberdata.append(memberdict)
+            memberdict = {'id': id, 'name': lbname, 'listeners': lblistenerdata, 'pools': lbpooldata}
+            lbmemberdata.append(memberdict)
 
-      self.data['load_balancer_listeners'] = listenerdata
-      self.data['load_balancer_pools'] = pooldata
-      self.data['load_balancer_members'] = memberdata
+      self.data['load_balancer_listeners'] = lblistenerdata
+      self.data['load_balancer_pools'] = lbpooldata
+      self.data['load_balancer_members'] = lbmemberdata
       #self.data['load_balancers'] = memberdata
   
       return
@@ -339,15 +343,17 @@ class RIAS:
    def findRow(self, dictionarylist, columnname, columnvalue):
       if len(dictionarylist) > 0:
          for dictionaryindex, dictionary in dictionarylist.iterrows():
-            if dictionary[columnname] == columnvalue:
-               return dictionary
+            if columnname in dictionary:
+               if dictionary[columnname] == columnvalue:
+                  return dictionary
       return {}
 
    def findRow2(self, dictionarylist, columnname1, columnvalue1, columnname2, columnvalue2):
       if len(dictionarylist) > 0:
          for dictionaryindex, dictionary in dictionarylist.iterrows():
-            if dictionary[columnname1] == columnvalue1 and dictionary[columnname2] == columnvalue2:
-               return dictionary
+            if columnname1 in dictionary and columnname2 in dictionary:
+               if dictionary[columnname1] == columnvalue1 and dictionary[columnname2] == columnvalue2:
+                  return dictionary
       return {}
 
    def normalizeData(self):
