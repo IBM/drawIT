@@ -112,7 +112,9 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 Create or copy example.py to top folder of drawIT and run python example.py.
 </p>
 
-<details><summary>Single Diagram Structure</summary>
+<details><summary>Structure</summary>
+
+<details><summary>Single Diagram</summary>
 
   from drawit import Diagram, Cluster, Node, Edge
 
@@ -147,7 +149,7 @@ Create or copy example.py to top folder of drawIT and run python example.py.
 
 </details>
 
-<details><summary>Multiple Diagrams Structure</summary>
+<details><summary>Multiple Diagrams</summary>
 
   from drawit import Diagrams, Diagram, Cluster, Node, Edge
 
@@ -186,6 +188,8 @@ Create or copy example.py to top folder of drawIT and run python example.py.
 
          with Cluster(...):
             node1 = Node(...)
+</details>
+
 </details>
 
 <details><summary>Parameters</summary>
