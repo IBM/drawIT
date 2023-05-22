@@ -118,31 +118,13 @@ Create or copy example.py to top folder of drawIT and run python example.py.
 
   from drawit import Diagram, Cluster, Node, Edge
 
-    with Diagram(...):
+    with Diagram("diagram", ...):
 
-      with Cluster(...):
-        node1 = Node(...)
+      with Cluster("cluster1", ...):
+        node1 = Node("node1", ...)
 
-        with Cluster(...) as cluster2:
-          node2 = Node(...)
-
-        with Cluster(...):
-          node3 = Node(...)
-          node4 = Node(...)
-
-          # No arrow line between node3 and node4.
-          node3 - node4
-    
-          # Single arrow line from node4 to node3.
-          node3 << node4
-          node3 << Edge(label="arrow") << node4  
-
-          # Single arrow line from node3 to node4.
-          node3 >> node4
-          node3 >> Edge(label="arrow") >> node4  
-
-          # Double arrow line between node3 and node4.
-          node3 << Edge(label="arrow") >> node4  
+        with Cluster("cluster2", ...) as cluster2:
+          node2 = Node("node2", ...)
 
         # Single arrow line from cluster2 to node1.
         node1 << cluster2
@@ -153,41 +135,58 @@ Create or copy example.py to top folder of drawIT and run python example.py.
 
   from drawit import Diagrams, Diagram, Cluster, Node, Edge
 
-    with Diagrams(...):
+    with Diagrams("diagrams", ...):
 
-      with Diagram(...) as diagram2:
+      with Diagram("diagram1", ...):
 
-         with Cluster(...):
-            node1 = Node(...)
+         with Cluster("cluster1", ...):
+            node1 = Node("node1", ...)
 
-            with Cluster(...) as cluster2:
-              node2 = Node(...)
-
-            with Cluster(...):
-              node3 = Node(...)
-              node4 = Node(...)
-
-              # No arrow line between node3 and node4.
-              node3 - node4
-    
-              # Single arrow line from node4 to node3.
-              node3 << node4
-              node3 << Edge(label="arrow") << node4  
-
-              # Single arrow line from node3 to node4.
-              node3 >> node4
-              node3 >> Edge(label="arrow") >> node4  
-
-              # Double arrow line between node3 and node4.
-              node3 << Edge(label="arrow") >> node4  
+            with Cluster("cluster2", ...) as cluster2:
+              node2 = Node("node2", ...)
 
             # Single arrow line from cluster2 to node1.
             node1 << cluster2
 
-      with Diagram(...) as diagram2:
+      with Diagram("diagram2", ...):
 
-         with Cluster(...):
-            node1 = Node(...)
+         with Cluster("cluster1", ...):
+            node1 = Node("node1", ...)
+
+            with Cluster("cluster2", ...) as cluster2:
+              node2 = Node("node2", ...)
+
+            # Single arrow line from cluster2 to node1.
+            node1 << cluster2
+</details>
+
+<details><summary>Edges</summary>
+
+  from drawit import Diagram, Cluster, Node, Edge
+
+    with Diagram(...):
+
+      with Cluster(...):
+        node1 = Node("node1", ...)
+        node2 = Node("node2", ...)
+
+        with Cluster(...):
+          node3 = Node("node3", ...)
+          node4 = Node("node4", ...)
+
+          # No arrow line between node3 and node4.
+          node3 - node4
+    
+          # Left single arrow line from node4 to node3 with/without label.
+          node3 << node4
+          node3 << Edge(label="arrow") << node4  
+
+          # Right single arrow line from node3 to node4 with/without label.
+          node3 >> node4
+          node3 >> Edge(label="arrow") >> node4  
+
+          # Double arrow line between node3 and node4.
+          node3 << Edge(label="arrow") >> node4  
 </details>
 
 </details>
