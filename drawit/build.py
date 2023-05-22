@@ -89,6 +89,26 @@ class Build:
       self.bottoms = []
       return
 
+   def buildSheets(self, attributes, diagrams):
+      provider = self.common.getProvider().value.upper()
+      diagramname = attributes["name"]
+      outputfile = attributes["filename"]
+      outputfile = outputfile if outputfile != "" else diagramname + ".xml"
+      outputfolder = self.common.getOutputFolder()
+      
+      self.common.printStartDiagram(diagramname, provider)
+
+      for name, diagram in diagrams.items():
+         print(name)
+         self.shapes.buildXML(diagram, name)
+
+      self.shapes.dumpXML(outputfile, outputfolder)
+      self.shapes.resetXML()
+
+      self.common.printDone(path.join(outputfolder, outputfile), provider)
+
+      return
+
    def buildDiagrams(self):
       self.checkAll()
 

@@ -18,6 +18,7 @@ from enum import Enum
 class Attributes:
    def __init__(self):
       self.sequence = []
+      self.sheets = {}
       self.diagrams = {}
       self.clusters = {}
       self.nodes = {}
@@ -33,6 +34,9 @@ class Attributes:
    def getSequence(self):
       return self.sequence
 
+   def getSheets(self):
+      return self.sheets
+
    def getDiagrams(self):
       return self.diagrams
 
@@ -45,6 +49,9 @@ class Attributes:
    def getEdges(self):
       return self.edges
 
+   def setSheets(self, sheets):
+      self.sheets = sheets
+
    def setDiagrams(self, diagrams):
       self.diagrams = diagrams
 
@@ -56,6 +63,9 @@ class Attributes:
 
    def setEdges(self, edges):
       self.edges = edges
+
+   def addSheets(self, diagramid, attributes):
+      self.sheets[diagramid] = attributes
 
    def addDiagram(self, diagramid, attributes):
       self.diagrams[diagramid] = attributes
@@ -92,6 +102,15 @@ class Attributes:
 
    def updateSequence(self, sequenceid):
       self.sequence.append(sequenceid)
+
+   def getDiagramsAttributes(self,
+      attrtype = "diagrams",
+      name = "",
+      filename = ""):
+    return {
+      "type": attrtype,
+      "name": name,
+      "filename": filename}
 
    def getDiagramAttributes(self,
       attrtype = "diagram",

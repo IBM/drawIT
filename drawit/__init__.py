@@ -19,4 +19,4 @@ from .build import Build
 from .compose import Compose
 
 from .colors import Colors
-from .diagram import Diagram, Cluster, Node, Edge
+from .diagram import Diagrams, Diagram, Cluster, Node, Edge

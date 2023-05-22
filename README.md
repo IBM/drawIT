@@ -45,9 +45,9 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Network ACLs | :heavy_check_mark: | 5/1 | | |
-| Security Groups | :heavy_check_mark: | 6/1 | | |
-| Direct Link | :heavy_check_mark: | 8/1 | | |
+| Network ACLs | :heavy_check_mark: | 6/1 | | |
+| Security Groups | :heavy_check_mark: | 7/1 | | |
+| Direct Link | :heavy_check_mark: | 9/1 | | |
 | Routing Tables | | | | |
 | Routing Table Routes | | | | |
 | Bare Metal Servers | | | | | 
@@ -112,39 +112,80 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 Create or copy example.py to top folder of drawIT and run python example.py.
 </p>
 
-<details><summary>Structure</summary>
+<details><summary>Single Diagram Structure</summary>
 
-    from drawit import Diagram, Cluster, Node, Edge
+  from drawit import Diagram, Cluster, Node, Edge
 
-        with Diagram(...):
+    with Diagram(...):
+
+      with Cluster(...):
+        node1 = Node(...)
+
+        with Cluster(...) as cluster2:
+          node2 = Node(...)
+
+        with Cluster(...):
+          node3 = Node(...)
+          node4 = Node(...)
+
+          # No arrow line between node3 and node4.
+          node3 - node4
+    
+          # Single arrow line from node4 to node3.
+          node3 << node4
+          node3 << Edge(label="arrow") << node4  
+
+          # Single arrow line from node3 to node4.
+          node3 >> node4
+          node3 >> Edge(label="arrow") >> node4  
+
+          # Double arrow line between node3 and node4.
+          node3 << Edge(label="arrow") >> node4  
+
+        # Single arrow line from cluster2 to node1.
+        node1 << cluster2
+
+</details>
+
+<details><summary>Multiple Diagrams Structure</summary>
+
+  from drawit import Diagrams, Diagram, Cluster, Node, Edge
+
+    with Diagrams(...):
+
+      with Diagram(...) as diagram2:
+
+         with Cluster(...):
+            node1 = Node(...)
+
+            with Cluster(...) as cluster2:
+              node2 = Node(...)
 
             with Cluster(...):
-                node1 = Node(...)
+              node3 = Node(...)
+              node4 = Node(...)
 
-                with Cluster(...) as cluster2:
-                    node2 = Node(...)
-
-                with Cluster(...):
-                    node3 = Node(...)
-                    node4 = Node(...)
-
-                    # No arrow line between node3 and node4.
-                    node3 - node4
+              # No arrow line between node3 and node4.
+              node3 - node4
     
-                    # Single arrow line from node4 to node3.
-                    node3 << node4
-                    node3 << Edge(label="arrow") << node4  
+              # Single arrow line from node4 to node3.
+              node3 << node4
+              node3 << Edge(label="arrow") << node4  
 
-                    # Single arrow line from node3 to node4.
-                    node3 >> node4
-                    node3 >> Edge(label="arrow") >> node4  
+              # Single arrow line from node3 to node4.
+              node3 >> node4
+              node3 >> Edge(label="arrow") >> node4  
 
-                    # Double arrow line between node3 and node4.
-                    node3 << Edge(label="arrow") >> node4  
+              # Double arrow line between node3 and node4.
+              node3 << Edge(label="arrow") >> node4  
 
-                # Single arrow line from cluster2 to node1.
-                node1 << cluster2
+            # Single arrow line from cluster2 to node1.
+            node1 << cluster2
 
+      with Diagram(...) as diagram2:
+
+         with Cluster(...):
+            node1 = Node(...)
 </details>
 
 <details><summary>Parameters</summary>
@@ -162,6 +203,13 @@ Notes:
 - Planned: Direct export to jpg, pdf, png, or svg.
 - Planned: Improve support for long labels and sublabels.
 - Planned: Badges.
+
+<p>
+Diagrams:
+</p>
+
+- name
+- filename
 
 <p>
 Diagram:

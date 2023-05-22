@@ -22,6 +22,7 @@ from .common import Common
 from .attributes import Attributes
 from .build import Build
 
+_diagrams = ContextVar("diagrams")
 _diagram = ContextVar("diagram")
 _cluster = ContextVar("cluster")
 
@@ -31,7 +32,21 @@ _cluster = ContextVar("cluster")
 #_edges = {}    # Dictionary of edges.
 
 _data = Attributes()
+_savediagrams = {}
 
+
+def getDiagrams():
+   try:
+      return _diagrams.get()
+   except LookupError:
+      return None
+
+def setDiagrams(diagrams):
+   _diagrams.set(diagrams)
+
+def saveDiagram(name, xmldata):
+   if not name in _savediagrams:
+      _savediagrams[name] = xmldata 
 
 def getDiagram():
    try:
@@ -58,10 +73,37 @@ def randomid():
    return uuid4().hex
 
 
+class Diagrams:
+   common = None
+   attributes = {}
+   diagramid = None
+
+   def __init__(self, 
+                name = "",
+                filename = ""):
+      self.common = Common()
+      self.diagramid = randomid()
+
+      self.attributes = _data.getDiagramsAttributes(name=name, filename=filename)
+      _data.addSheets(self.diagramid, self.attributes)
+      return
+
+   def __enter__(self):
+      setDiagrams(self)
+      return self
+
+   def __exit__(self, exception_type, exception_value, traceback):
+      build = Build(self.common, _data)
+      build.buildSheets(self.attributes, _savediagrams)
+      del build
+      setDiagrams(None)
+      return
+
 class Diagram:
    common = None
    attributes = {}
    diagramid = None
+   name = ""
 
    def __init__(self, 
                 name = "",
@@ -74,6 +116,10 @@ class Diagram:
                 outformat = ""):
       self.common = Common()
       self.diagramid = randomid()
+      self.name = name
+
+      if getDiagrams() != None:
+         filename = "*"
 
       self.attributes = _data.getDiagramAttributes(name=name, filename=filename, direction=direction, alternate=alternate, provider=provider, fontname=fontname, fontsize=fontsize,  outformat=outformat)
       #_diagrams[self.diagramid] = self.attributes
@@ -90,11 +136,13 @@ class Diagram:
       xmldata = build.buildDiagrams()
       if xmldata == None:
          self.common.printExit()
+      else:
+         saveDiagram(self.name, xmldata)
       del build
+      _data.reset()
       setDiagram(None)
       #setCluster(None)
       return
-
 
 class Cluster:
    common = None
