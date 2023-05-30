@@ -99,7 +99,6 @@ class Build:
       self.common.printStartDiagram(diagramname, provider)
 
       for name, diagram in diagrams.items():
-         print(name)
          self.shapes.buildXML(diagram, name)
 
       self.shapes.dumpXML(outputfile, outputfolder)

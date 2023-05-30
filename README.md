@@ -45,9 +45,9 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Network ACLs | :heavy_check_mark: | 6/1 | | |
-| Security Groups | :heavy_check_mark: | 7/1 | | |
-| Direct Link | :heavy_check_mark: | 9/1 | | |
+| Network ACLs | :heavy_check_mark: | 6/15 | | |
+| Security Groups | :heavy_check_mark: | 8/1 | | |
+| Direct Link | :heavy_check_mark: | 11/1 | | |
 | Routing Tables | | | | |
 | Routing Table Routes | | | | |
 | Bare Metal Servers | | | | | 
