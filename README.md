@@ -1,13 +1,9 @@
 # drawIT
-Automate creation of diagrams.
+Automate creation and layout of diagrams.
 
 ## Overview
 
-Automate creation of diagrams that can be viewed in IBM2 on the diagrams.net desktop.
-
-The [Mac beta (internal use only)](https://github.ibm.com/acs-sa/it-architecture-diagrams/releases/tag/v30.2.45-ibm2beta2) of the diagrams.net desktop is currently available.  Windows desktop with IBM2 will be avaiaible when IBM2 is published.  
-
-Note that the drawIT beta is subject to change until finalized, and the IBM2 beta will change when IBM2 is published.  
+Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 --- 
 
@@ -45,9 +41,9 @@ Note that the drawIT beta is subject to change until finalized, and the IBM2 bet
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Network ACLs | :heavy_check_mark: | 9/15 | | |
-| Security Groups | :heavy_check_mark: | 10/15 | | |
-| Direct Link | :heavy_check_mark: | 12/15 | | |
+| Network ACLs | :heavy_check_mark: | 12/15 | | |
+| Security Groups | :heavy_check_mark: | 2/15 | | |
+| Direct Link | :heavy_check_mark: | 4/15 | | |
 | Routing Tables | | | | |
 | Routing Table Routes | | | | |
 | Bare Metal Servers | | | | | 
