@@ -42,8 +42,8 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Network ACLs | :heavy_check_mark: | 12/15 | | |
-| Security Groups | :heavy_check_mark: | 2/15 | | |
-| Direct Link | :heavy_check_mark: | 4/15 | | |
+| Security Groups | :heavy_check_mark: | 1/15 | | |
+| Direct Link | :heavy_check_mark: | 2/15 | | |
 | Routing Tables | | | | |
 | Routing Table Routes | | | | |
 | Bare Metal Servers | | | | | 
