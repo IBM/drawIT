@@ -15,7 +15,9 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 4. Terraform - Input is from Terraform for existing infrastructure, Output is diagrams.net xml file.
 
 <details><summary>Logic Flow</summary>
+
 ![Flow](images/flow.png)
+
 </details>
 
 <details><summary>Features Supported</summary>
