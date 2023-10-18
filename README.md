@@ -14,7 +14,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 3. RIAS - Input is from RIAS APIs for existing infrastructure, Output is diagrams.net xml file.
 4. Terraform - Input is from Terraform for existing infrastructure, Output is diagrams.net xml file.
 
-![Flow](images/flow.png)
+[Flow](images/flow.png)
 
 <details><summary>Features Supported</summary>
 
