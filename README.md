@@ -7,24 +7,14 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 --- 
 
-## Use Cases
+## Types
 
-1. Code-to-Diagram (subject to change): 
-  - Input is python code.
-  - Output is diagrams.net xml file.
-  - Refer to Code-to-Diagram Guide below.
-2. JSON-to-Diagram:
-  - Input is from tool-generated JSON/YAML for existing infrastructure.
-  - Output is diagrams.net xml file.
-  - Refer to JSON-to-Diagram Guide below.
-3. RIAS-to-Diagram:
-  - Input is from RIAS APIs for existing infrastructure.
-  - Output is diagrams.net xml file.
-  - Refer to RIAS-to-Diagram Guide below.
-4. Terraform-to-Diagram:
-  - Input is from Terraform for existing infrastructure.
-  - Output is diagrams.net xml file.
-  - Refer to Terraform-to-Diagram Guide below.
+1. JSON - Input is from tool-generated JSON/YAML for existing infrastructure, Output is diagrams.net xml file.
+2. Python - Input is python code, Output is diagrams.net xml file.
+3. RIAS - Input is from RIAS APIs for existing infrastructure, Output is diagrams.net xml file.
+4. Terraform - Input is from Terraform for existing infrastructure, Output is diagrams.net xml file.
+
+![Flow](images/flow.png)
 
 <details><summary>Features Supported</summary>
 
@@ -198,7 +188,7 @@ Notes:
 - Direction default is left-to-right changable to top-to-bottom. 
 - Badges are not currently enabled.
 - Connectors can be defined between clusters and nodes with or without arrowheads.
-- Diagrams can be exported to jpg, pdf, png, or svg from diagrams.net.
+- Diagrams can be exported to jpg, pdf, ong, or svg from diagrams.net.
 - Planned: Direct export to jpg, pdf, png, or svg.
 - Planned: Improve support for long labels and sublabels.
 - Planned: Badges.
