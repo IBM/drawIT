@@ -95,7 +95,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 --- 
 
-## diagram-as-code Guide
+<details><summary>diagram-as-code Guide</summary>
 
 <p>
 Create or copy example.py to top folder of drawIT and run python example.py.
@@ -437,9 +437,11 @@ Font Names:
 
 </details>
 
+</details>
+
 --- 
 
-## JSON-to-Diagram Guide
+## JSON Guide
 
 <p>
 Refer to run.sh and rungui.sh in the scripts folder.
@@ -447,7 +449,7 @@ Refer to run.sh and rungui.sh in the scripts folder.
 
 ---
 
-## RIAS-to-Diagram Guide
+## RIAS Guide
 
 <p>
 Refer to rungui.sh or runrias.sh in scripts folder.
@@ -455,7 +457,7 @@ Refer to rungui.sh or runrias.sh in scripts folder.
 
 ---
 
-## Terraform-to-Diagram Guide
+## Terraform Guide
 
 <p>
 Refer to runtf.sh in the scripts folder.
