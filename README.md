@@ -95,7 +95,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 --- 
 
-## Code-to-Diagram Guide
+## diagram-as-code Guide
 
 <p>
 Create or copy example.py to top folder of drawIT and run python example.py.
