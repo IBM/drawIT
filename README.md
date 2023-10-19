@@ -7,12 +7,12 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 --- 
 
-## Types
+## Input Formats
 
 1. JSON - Input is from tool-generated JSON/YAML for existing infrastructure, Output is diagrams.net xml file.
-2. Python - Input is python code, Output is diagrams.net xml file.
-3. RIAS - Input is from RIAS APIs for existing infrastructure, Output is diagrams.net xml file.
-4. Terraform - Input is from Terraform for existing infrastructure, Output is diagrams.net xml file.
+2. RIAS - Input is from RIAS APIs for existing infrastructure, Output is diagrams.net xml file.
+3. Terraform - Input is from Terraform for existing infrastructure, Output is diagrams.net xml file.
+4. diagram-as-code: Input is python code, Output is diagrams.net xml file.
 
 <details><summary>Logic Flow</summary>
 
@@ -20,7 +20,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 </details>
 
-<details><summary>Features Supported</summary>
+<details><summary>Supported IBM Cloud Features</summary>
 
 | Feature | JSON | RIAS | Terraform |
 | --- | --- | --- | --- |
