@@ -67,7 +67,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 --- 
 
-## Installation Guide
+<details><summary>Installation Guide</summary>
 
 <details><summary>drawIT</summary>
 
@@ -93,7 +93,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 </details>
 
---- 
+</details>
 
 <details><summary>diagram-as-code Guide</summary>
 
@@ -439,29 +439,29 @@ Font Names:
 
 </details>
 
---- 
-
-## JSON Guide
+<details><summary>JSON Guide</summary>
 
 <p>
 Refer to run.sh and rungui.sh in the scripts folder.
 </p>
 
----
+</details>
 
-## RIAS Guide
+<details><summary>RIAS Guide</summary>
 
 <p>
 Refer to rungui.sh or runrias.sh in scripts folder.
 </p>
 
----
+</details>
 
-## Terraform Guide
+<details><summary>Terraform Guide</summary>
 
 <p>
 Refer to runtf.sh in the scripts folder.
 </p>
+
+</details>
 
 ---
 
