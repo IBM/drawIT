@@ -20,7 +20,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 </details>
 
-<details><summary>Supported IBM Cloud Features</summary>
+<details><summary>Supported Features</summary>
 
 | Feature | JSON | RIAS | Terraform |
 | --- | --- | --- | --- |
