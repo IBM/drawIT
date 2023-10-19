@@ -5,14 +5,14 @@ Automate creation and layout of diagrams.
 
 Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
---- 
-
-## Input Formats
+<details><summary>Input Formats</summary>
 
 1. JSON - Input is from tool-generated JSON/YAML for existing infrastructure.
 2. RIAS - Input is from RIAS APIs for existing infrastructure.
 3. Terraform - Input is from Terraform for existing infrastructure.
 4. diagram-as-code: Input is python code.
+
+</details>
 
 <details><summary>Logic Flow</summary>
 
@@ -92,6 +92,30 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 - pip install tabulate
 
 </details>
+
+</details>
+
+<details><summary>JSON Guide</summary>
+
+<p>
+Refer to run.sh and rungui.sh in the scripts folder.
+</p>
+
+</details>
+
+<details><summary>RIAS Guide</summary>
+
+<p>
+Refer to rungui.sh or runrias.sh in scripts folder.
+</p>
+
+</details>
+
+<details><summary>Terraform Guide</summary>
+
+<p>
+Refer to runtf.sh in the scripts folder.
+</p>
 
 </details>
 
@@ -436,30 +460,6 @@ Font Names:
 </details>
 
 </details>
-
-</details>
-
-<details><summary>JSON Guide</summary>
-
-<p>
-Refer to run.sh and rungui.sh in the scripts folder.
-</p>
-
-</details>
-
-<details><summary>RIAS Guide</summary>
-
-<p>
-Refer to rungui.sh or runrias.sh in scripts folder.
-</p>
-
-</details>
-
-<details><summary>Terraform Guide</summary>
-
-<p>
-Refer to runtf.sh in the scripts folder.
-</p>
 
 </details>
 
