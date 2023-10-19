@@ -1,4 +1,7 @@
 # drawIT
+
+## Overview
+
 Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 <details><summary>Input Formats</summary>
@@ -62,6 +65,8 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 </details>
 
 --- 
+
+## Guides
 
 <details><summary>Installation Guide</summary>
 
