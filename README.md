@@ -10,7 +10,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 - JSON : Input is from tool-generated JSON.
 - RIAS : Input is from RIAS APIs.
 - Terraform : Input is from Terraform state file.
-2. Diagram-as-Code: 
+2. Diagram-as-Code for designing architectures:
 - Python : Input is user-created Python code.
 
 </details>
