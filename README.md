@@ -71,24 +71,18 @@ Data Features (more planned):
 | Schematics | | | |
 --->
 
-</details>
-
 <p>
 Diagram-as-Code Features (tentative):
 </p>
 
 | Component | Feature | Status |
 | --- | --- | --- |
-| Diagram | | |
-| | Base Diagram | :heavy_check_mark: |
+| Diagram | Diagram Structure | :heavy_check_mark: |
 | | Single Diagram | :heavy_check_mark: |
 | | Multiple Diagrams | :heavy_check_mark: |
-| Cluster | | |
-| | Cluster Structure | :heavy_check_mark: |
-| Node | | |
-| | Node Structure | :heavy_check_mark: |
-| Edge |  |
-| | Edge Structure | :heavy_check_mark: |
+| Cluster | Cluster Structure | :heavy_check_mark: |
+| Node | Node Structure | :heavy_check_mark: |
+| Edge | Edge Structure | :heavy_check_mark: |
 
 </details>
 
