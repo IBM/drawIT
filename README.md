@@ -77,13 +77,13 @@ Diagram-as-Code Features (tentative):
 
 | Component | Feature | Status |
 | --- | --- | --- |
-| Diagram | Structure | :heavy_check_mark: |
-| | Single | :heavy_check_mark: |
-| | Multiple | :heavy_check_mark: |
-| Cluster | Structure | :heavy_check_mark: |
+| Diagram | Base Structure | :heavy_check_mark: |
+| | Single Diagram | :heavy_check_mark: |
+| | Multiple Diagrams | :heavy_check_mark: |
+| Cluster | Base Structure | :heavy_check_mark: |
 | | Direction | :heavy_check_mark: |
-| Node | Node Structure | :heavy_check_mark: |
-| Edge | Edge Structure | :heavy_check_mark: |
+| Node | Base Structure | :heavy_check_mark: |
+| Edge | Base Structure | :heavy_check_mark: |
 
 </details>
 
