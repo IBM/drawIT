@@ -6,6 +6,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 <p>
 Input Formats:
+</p>
 
 1. Data from existing infrastructure:
 - JSON : Input is from tool-generated JSON.
@@ -20,7 +21,11 @@ Input Formats:
 
 </details>
 
-<details><summary>Supported Data Features</summary>
+<details><summary>Supported Features</summary>
+
+<p>
+Data Features (more planned):
+</p>
 
 | Feature | JSON | RIAS | Terraform |
 | --- | --- | --- | --- |
@@ -35,10 +40,6 @@ Input Formats:
 | VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | TBD |
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-
-<p>
-More features planned.
-</p>
 
 <!---
 | Network ACLs | 12/15 | | |
@@ -71,6 +72,23 @@ More features planned.
 --->
 
 </details>
+
+<p>
+Diagram-as-Code Features (tentative):
+</p>
+
+| Component | Feature | Status |
+| --- | --- | --- |
+| Diagram | | |
+| | Base Diagram | :heavy_check_mark: |
+| | Single Diagram | :heavy_check_mark: |
+| | Multiple Diagrams | :heavy_check_mark: |
+| Cluster | | |
+| | Cluster Structure | :heavy_check_mark: |
+| Node | | |
+| | Node Structure | :heavy_check_mark: |
+| Edge |  |
+| | Edge Structure | :heavy_check_mark: |
 
 --- 
 
