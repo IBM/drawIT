@@ -458,10 +458,12 @@ Font Names:
 
 ---
 
+<!---
 ## References
 
 - [IT Architecture Diagrams](https://github.com/IBM/it-architecture-diagrams)
 - [Code Pattern](https://github.com/IBM/codepattern-multitier-vpc)
+--->
 
 ## License
 
