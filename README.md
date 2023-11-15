@@ -4,7 +4,8 @@
 
 Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
-<details><summary>Input Formats</summary>
+<p>
+Input Formats:
 
 1. Data from existing infrastructure:
 - JSON : Input is from tool-generated JSON.
@@ -12,8 +13,6 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 - Terraform : Input is from Terraform state file.
 2. Diagram-as-Code for designing architectures:
 - Python : Input is user-created Python code.
-
-</details>
 
 <details><summary>Logic Flow</summary>
 
