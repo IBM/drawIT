@@ -24,7 +24,7 @@ Input Formats:
 <details><summary>Supported Features</summary>
 
 <p>
-Data Features (more planned):
+Data Features (more features in progress):
 </p>
 
 | Feature | JSON | RIAS | Terraform |
@@ -72,18 +72,38 @@ Data Features (more planned):
 --->
 
 <p>
-Diagram-as-Code Features (tentative):
+Diagram-as-Code Features (features are tentative until finalized):
 </p>
 
-| Component | Feature | Status |
-| --- | --- | --- |
-| Diagram | Base Structure | :heavy_check_mark: |
-| | Single Diagram | :heavy_check_mark: |
-| | Multiple Diagrams | :heavy_check_mark: |
-| Cluster | Base Structure | :heavy_check_mark: |
-| | Direction | :heavy_check_mark: |
-| Node | Base Structure | :heavy_check_mark: |
-| Edge | Base Structure | :heavy_check_mark: |
+| Component | Feature | Status | Notes |
+| --- | --- | --- | |
+| Diagram | Base Structure | :heavy_check_mark: | 
+| | Name | :heavy_check_mark: | |
+| | Filename | :heavy_check_mark: | |
+| | Single Diagram | :heavy_check_mark: | |
+| | Multiple Diagrams | :heavy_check_mark: | |
+| Cluster | Base Structure | :heavy_check_mark: | |
+| | Label | :heavy_check_mark: | |
+| | Sublabel | :heavy_check_mark: | |
+| | Direction | :heavy_check_mark: | |
+| | Icon | :heavy_check_mark: | |
+| | Border Color | :heavy_check_mark: | |
+| | Fill Color | :heavy_check_mark: | |
+| | Alternate Fill | :heavy_check_mark: | |
+| | Fontname | :heavy_check_mark: | |
+| | Fontsize | :heavy_check_mark: | |
+| Node | Base Structure | :heavy_check_mark: | |
+| | Label | :heavy_check_mark: | |
+| | Sublabel | :heavy_check_mark: | |
+| | Icon | :heavy_check_mark: | |
+| | Border Color | :heavy_check_mark: | |
+| | Fill Color | :heavy_check_mark: | |
+| | Fontname | :heavy_check_mark: | |
+| | Fontsize | :heavy_check_mark: | |
+| Edge | Base Structure | :heavy_check_mark: | |
+| | Label | :heavy_check_mark: | |
+| | Fontname | :heavy_check_mark: | |
+| | Fontsize | :heavy_check_mark: | |
 
 </details>
 
