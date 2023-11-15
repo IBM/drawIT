@@ -6,10 +6,12 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 <details><summary>Input Formats</summary>
 
-1. JSON - Input is from tool-generated JSON/YAML for existing infrastructure.
-2. RIAS - Input is from user-created code that accesses RIAS APIs for existing infrastructure.
-3. Terraform - Input is from Terraform state file for existing infrastructure.
-4. diagram-as-code: Input is user-created Python code.
+1. Data
+- JSON : Input is from tool-generated JSON/YAML for existing infrastructure.
+- RIAS : Input is from user-created code that accesses RIAS APIs for existing infrastructure.
+- Terraform : Input is from Terraform state file for existing infrastructure.
+2. Diagram-as-Code
+- Python : Input is user-created Python code.
 
 </details>
 
@@ -19,7 +21,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 </details>
 
-<details><summary>Supported Features</summary>
+<details><summary>Supported Data Features</summary>
 
 | Feature | JSON | RIAS | Terraform |
 | --- | --- | --- | --- |
