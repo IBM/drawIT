@@ -90,6 +90,8 @@ Diagram-as-Code Features (tentative):
 | Edge |  |
 | | Edge Structure | :heavy_check_mark: |
 
+</details>
+
 --- 
 
 ## Guides
