@@ -7,9 +7,9 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 <details><summary>Input Formats</summary>
 
 1. JSON - Input is from tool-generated JSON/YAML for existing infrastructure.
-2. RIAS - Input is from RIAS APIs for existing infrastructure.
-3. Terraform - Input is from Terraform for existing infrastructure.
-4. diagram-as-code: Input is python code.
+2. RIAS - Input is from user-created code that accesses RIAS APIs for existing infrastructure.
+3. Terraform - Input is from Terraform state file for existing infrastructure.
+4. diagram-as-code: Input is user-created Python code.
 
 </details>
 
@@ -31,9 +31,11 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 | VSI | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Floating IP |:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Public Gateway | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | |
+| VPN Gateway | :heavy_check_mark: | :heavy_check_mark: | TBD |
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+
+<!---
 | Network ACLs | 12/15 | | |
 | Security Groups | 1/15 | | |
 | Direct Link | 2/15 | | |
@@ -61,6 +63,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 | IKS Clusters | | | |
 | IKS VPC LB | | | |
 | Schematics | | | |
+--->
 
 </details>
 
