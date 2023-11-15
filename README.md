@@ -70,14 +70,13 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 
 <details><summary>Installation Guide</summary>
 
-<details><summary>drawIT</summary>
+<p>
+Fork or copy drawIT to a local directory.
+</p>
 
-- Fork or copy drawIT to a local directory.
-
-</details>
-
-<details><summary>Python</summary>
-
+<p>
+Setup preqreqs:
+</p>
 1. Install Python (3.11.3+):
 - Install [Python](https://www.python.org/downloads/).
 - After installation the installer will open the install directory.
@@ -91,8 +90,6 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 - pip install pyyaml
 - pip install requests
 - pip install tabulate
-
-</details>
 
 </details>
 
