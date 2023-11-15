@@ -8,7 +8,7 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 Input Formats:
 </p>
 
-1. Data from existing infrastructure:
+1. Data for viewing existing infrastructure:
 - JSON : Input is from tool-generated JSON.
 - RIAS : Input is from RIAS APIs.
 - Terraform : Input is from Terraform state file.
