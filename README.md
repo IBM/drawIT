@@ -2,7 +2,7 @@
 
 ## Overview
 
-Automate creation and layout of diagrams that can be viewed in diagrams.net.
+Automate creation and layout of diagrams.
 
 <p>
 Input Formats:
