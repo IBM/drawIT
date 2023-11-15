@@ -35,6 +35,10 @@ Automate creation and layout of diagrams that can be viewed in diagrams.net.
 | ALB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | NLB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
+<p>
+More features planned.
+</p>
+
 <!---
 | Network ACLs | 12/15 | | |
 | Security Groups | 1/15 | | |
