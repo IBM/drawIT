@@ -365,6 +365,9 @@ class Load:
 
             #lblisteners = lb['listeners']
 
+            if not 'pools' in lb:
+               continue
+
             lbpools = lb['pools']
             if not hasattr(lbpools, '__iter__'):
                self.common.printMissingPool(lbname)
